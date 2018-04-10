@@ -2,7 +2,6 @@ import Foundation
 import Alamofire
 import ObjectMapper
 import PromiseKit
-import NSLock_Synchronized
 
 public class AccountsApiClient {
     private let sessionManager: SessionManager
@@ -14,7 +13,7 @@ public class AccountsApiClient {
         sessionManager: SessionManager,
         credentials: AccountsApiCredentials,
         tokenRefresher: TokenRefresherProtocol?
-    ) {
+        ) {
         self.sessionManager = sessionManager
         self.tokenRefresher = tokenRefresher
         self.credentials = credentials
@@ -41,7 +40,8 @@ public class AccountsApiClient {
     }
     
     private func makeRequest(apiRequest: AccountsApiRequest) {
-        synchronized(AnyHashable(String(describing: tokenRefresher))) {
+        let lockQueue = DispatchQueue(label: String(describing: tokenRefresher), attributes: [])
+        lockQueue.sync {
             if let tokenRefresher = tokenRefresher, tokenRefresher.isRefreshing() {
                 requestsQueue.append(apiRequest)
             } else {
@@ -65,7 +65,7 @@ public class AccountsApiClient {
                                     apiRequest.pendingPromise.resolver.reject(error)
                                     return
                                 }
-                                synchronized(AnyHashable(String(describing: tokenRefresher))) {
+                                lockQueue.sync {
                                     if self.credentials.hasRecentlyRefreshed() {
                                         self.makeRequest(apiRequest: apiRequest)
                                         return
@@ -87,8 +87,6 @@ public class AccountsApiClient {
                                 apiRequest.pendingPromise.resolver.reject(error)
                             }
                         }
-                        
-
                 }
             }
         }
