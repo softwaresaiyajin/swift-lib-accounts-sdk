@@ -11,7 +11,6 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 88774BBD205FE2D200AC5048 /* Build configuration list for PBXAggregateTarget "PayseraAccountsSDK (universal)" */;
 			buildPhases = (
-				88774BBE205FE3E500AC5048 /* ShellScript */,
 			);
 			dependencies = (
 			);
@@ -21,15 +20,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		1C1B4D95206E5BD500FEE074 /* PayseraAccountsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C1B4D94206E5BD500FEE074 /* PayseraAccountsSDK.framework */; };
 		52D6D9871BEFF229002C0205 /* PayseraAccountsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* PayseraAccountsSDK.framework */; };
 		880FCB92206CB29700350F98 /* PayseraAccountsSDK.plist in Resources */ = {isa = PBXBuildFile; fileRef = 880FCB91206CB29700350F98 /* PayseraAccountsSDK.plist */; };
 		880FCB94206CB43400350F98 /* PayseraAccountsSDKTests.plist in Resources */ = {isa = PBXBuildFile; fileRef = 880FCB93206CB43400350F98 /* PayseraAccountsSDKTests.plist */; };
 		880FCB96206CC6F900350F98 /* PSBalanceInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880FCB95206CC6F900350F98 /* PSBalanceInformation.swift */; };
 		880FCB9C206CEB0400350F98 /* PSAccountApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880FCB9B206CEB0400350F98 /* PSAccountApiError.swift */; };
 		880FCB9E206CF18500350F98 /* PSMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880FCB9D206CF18500350F98 /* PSMoney.swift */; };
-		88774BC8205FE5A300AC5048 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88774BC5205FE5A300AC5048 /* Alamofire.framework */; };
-		88774BC9205FE5A300AC5048 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88774BC6205FE5A300AC5048 /* PromiseKit.framework */; };
 		88774BCD205FE5F700AC5048 /* Cartfile.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 88774BCB205FE5F700AC5048 /* Cartfile.resolved */; };
 		88774BCE205FE5F700AC5048 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 88774BCC205FE5F700AC5048 /* Cartfile */; };
 		88B25A48206A23EB00BE81C5 /* AccountsApiClientFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B25A44206A23EB00BE81C5 /* AccountsApiClientFactory.swift */; };
@@ -39,18 +35,12 @@
 		88B25A50206A302800BE81C5 /* AccountsApiRequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B25A4D206A302800BE81C5 /* AccountsApiRequestRouter.swift */; };
 		88B25A51206A302800BE81C5 /* AccountsApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B25A4E206A302800BE81C5 /* AccountsApiRequest.swift */; };
 		88B25A52206A302800BE81C5 /* TokenRefresherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B25A4F206A302800BE81C5 /* TokenRefresherProtocol.swift */; };
-		88B25A54206A315100BE81C5 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B25A53206A315100BE81C5 /* ObjectMapper.framework */; };
-		88B25A56206A361200BE81C5 /* JWTDecode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B25A55206A361200BE81C5 /* JWTDecode.framework */; };
 		88B25A59206A4C6A00BE81C5 /* PSIbanInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B25A58206A4C6A00BE81C5 /* PSIbanInformation.swift */; };
 		8933C7901EB5B82D000D00A4 /* PayseraAccountsSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* PayseraAccountsSDKTests.swift */; };
 		ED753919206A8ADA004EA953 /* JWTDecode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B25A55206A361200BE81C5 /* JWTDecode.framework */; };
 		ED75391A206A8ADA004EA953 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B25A53206A315100BE81C5 /* ObjectMapper.framework */; };
 		ED75391B206A8ADA004EA953 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88774BC5205FE5A300AC5048 /* Alamofire.framework */; };
 		ED75391C206A8ADA004EA953 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88774BC6205FE5A300AC5048 /* PromiseKit.framework */; };
-		ED753922206A915A004EA953 /* JWTDecode.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 88B25A55206A361200BE81C5 /* JWTDecode.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		ED753923206A915A004EA953 /* ObjectMapper.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 88B25A53206A315100BE81C5 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		ED753924206A915A004EA953 /* Alamofire.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 88774BC5205FE5A300AC5048 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		ED753925206A915A004EA953 /* PromiseKit.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 88774BC6205FE5A300AC5048 /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,10 +60,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				ED753922206A915A004EA953 /* JWTDecode.framework in Copy Files */,
-				ED753923206A915A004EA953 /* ObjectMapper.framework in Copy Files */,
-				ED753924206A915A004EA953 /* Alamofire.framework in Copy Files */,
-				ED753925206A915A004EA953 /* PromiseKit.framework in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,10 +98,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88774BC8205FE5A300AC5048 /* Alamofire.framework in Frameworks */,
-				88B25A56206A361200BE81C5 /* JWTDecode.framework in Frameworks */,
-				88B25A54206A315100BE81C5 /* ObjectMapper.framework in Frameworks */,
-				88774BC9205FE5A300AC5048 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +110,6 @@
 				ED75391B206A8ADA004EA953 /* Alamofire.framework in Frameworks */,
 				52D6D9871BEFF229002C0205 /* PayseraAccountsSDK.framework in Frameworks */,
 				ED75391A206A8ADA004EA953 /* ObjectMapper.framework in Frameworks */,
-				1C1B4D95206E5BD500FEE074 /* PayseraAccountsSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,22 +333,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		88774BBE205FE3E500AC5048 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"PayseraAccountsSDK\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\nxcodebuild -target \"PayseraAccountsSDK\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/PayseraAccountsSDK.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\nSIMULATOR_SWIFT_MODULES_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/PayseraAccountsSDK.framework/Modules/PayseraAccountsSDK.swiftmodule/.\"\nif [ -d \"${SIMULATOR_SWIFT_MODULES_DIR}\" ]; then\ncp -R \"${SIMULATOR_SWIFT_MODULES_DIR}\" \"${UNIVERSAL_OUTPUTFOLDER}/PayseraAccountsSDK.framework/Modules/PayseraAccountsSDK.swiftmodule\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		52D6D9771BEFF229002C0205 /* Sources */ = {
