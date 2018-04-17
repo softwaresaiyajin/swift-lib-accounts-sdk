@@ -1,4 +1,0 @@
-framework module PayseraAccountsSDK {
-    header "PayseraAccountsSDK-Swift.h"
-    requires objc
-}
