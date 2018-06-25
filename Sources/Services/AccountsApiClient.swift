@@ -1,4 +1,4 @@
-import Foundation
+ import Foundation
 import Alamofire
 import ObjectMapper
 import PromiseKit
@@ -19,6 +19,7 @@ public class AccountsApiClient {
         self.credentials = credentials
     }
     
+    // MARK: - Paysera wallet information API
     public func getIbanInformation(iban: String) -> Promise<PSIbanInformation> {
         let request = createRequest(.getIbanInformation(iban: iban))
         makeRequest(apiRequest: request)
@@ -39,6 +40,93 @@ public class AccountsApiClient {
             .then(createPromise)
     }
     
+    
+    // MARK: - Payment cards API
+    public func createPaymentCard(_ card: PSCreatePaymentCardRequest) -> Promise<PSPaymentCard> {
+        
+        let request = createRequest(.createCard(card))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+
+    public func activateCard(_ id: Int) -> Promise<PSPaymentCard> {
+        
+        let request = createRequest(.activateCard(id: id))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
+    public func deactivatePaymentCard(id: Int) -> Promise<PSPaymentCard> {
+        let request = createRequest(.cancelPaymentCard(id: id))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
+    public func retrievePaymentCardPIN(id: Int, cvv: String) -> Promise<PSPaymentCardPIN> {
+        let request = createRequest(.retrievePaymentCardPIN(id: id, cvv: cvv))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
+    public func getPaymentCards(cardsFilter: PSGetPaymentCardsFilterRequest) -> Promise<PSMetadataAwareResponse<PSPaymentCard>> {
+        
+        let request = createRequest(.getPaymentCards(cardsFilter: cardsFilter))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
+    public func setPaymentCardLimit(accountNumber: String, cardLimit: PSPaymentCardLimit) -> Promise<PSPaymentCardLimit> {
+        let request = createRequest(.setPaymentCardLimit(accountNumber: accountNumber, cardLimit: cardLimit))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
+    public func getPaymentCardLimit(accountNumber: String) -> Promise<PSPaymentCardLimit> {
+        let request = createRequest(.getPaymentCardLimit(accountNumber: accountNumber))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
+    public func cancelPaymentCard(id: Int) -> Promise<PSPaymentCard> {
+        let request = createRequest(.cancelPaymentCard(id: id))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
+    
+    // MARK: - Private request methods
     private func makeRequest(apiRequest: AccountsApiRequest) {
         let lockQueue = DispatchQueue(label: String(describing: tokenRefresher), attributes: [])
         lockQueue.sync {
