@@ -65,7 +65,7 @@ public class AccountsApiClient {
     }
     
     public func deactivatePaymentCard(id: Int) -> Promise<PSPaymentCard> {
-        let request = createRequest(.cancelPaymentCard(id: id))
+        let request = createRequest(.deactivateCard(id: id))
         makeRequest(apiRequest: request)
         
         return request
@@ -95,7 +95,7 @@ public class AccountsApiClient {
             .then(createPromise)
     }
     
-    public func setPaymentCardLimit(accountNumber: String, cardLimit: PSPaymentCardLimit) -> Promise<PSPaymentCardLimit> {
+    public func setPaymentCardLimit(accountNumber: String, cardLimit: PSUpdatePaymentCardLimitRequest) -> Promise<PSPaymentCardLimit> {
         let request = createRequest(.setPaymentCardLimit(accountNumber: accountNumber, cardLimit: cardLimit))
         makeRequest(apiRequest: request)
         
