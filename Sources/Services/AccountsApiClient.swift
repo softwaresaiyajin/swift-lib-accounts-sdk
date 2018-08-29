@@ -43,7 +43,6 @@ public class AccountsApiClient {
     
     // MARK: - Payment cards API
     public func createPaymentCard(_ card: PSCreatePaymentCardRequest) -> Promise<PSPaymentCard> {
-        
         let request = createRequest(.createCard(card))
         makeRequest(apiRequest: request)
         
@@ -54,8 +53,17 @@ public class AccountsApiClient {
     }
 
     public func activateCard(_ id: Int) -> Promise<PSPaymentCard> {
-        
         let request = createRequest(.activateCard(id: id))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
+    public func enableCard(_ id: Int) -> Promise<PSPaymentCard> {
+        let request = createRequest(.enableCard(id: id))
         makeRequest(apiRequest: request)
         
         return request

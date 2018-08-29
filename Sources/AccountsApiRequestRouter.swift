@@ -14,6 +14,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     
     // MARK: - PUT
     case activateCard(id: Int)
+    case enableCard(id: Int)
     case deactivateCard(id: Int)
     case setPaymentCardLimit(accountNumber: String, cardLimit: PSUpdatePaymentCardLimitRequest)
     case retrievePaymentCardPIN(id: Int, cvv: String)
@@ -52,28 +53,31 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             return "/account/rest/v1/accounts/\(accountNumber)/full-balance"
             
         case .getPaymentCards( _):
-            return "/payment-card/v1/cards"
+            return "/issued-payment-card/v1/cards"
             
         case .getPaymentCardLimit(let accountNumber):
-            return "/payment-card/v1/accounts/\(accountNumber)/card-limit"
+            return "/issued-payment-card/v1/accounts/\(accountNumber)/card-limit"
             
         case .createCard( _):
-            return "/payment-card/v1/cards"
+            return "/issued-payment-card/v1/cards"
             
         case .activateCard(let id):
-            return "/payment-card/v1/cards/\(String(id))/activate"
+            return "/issued-payment-card/v1/cards/\(String(id))/activate"
+        
+        case .enableCard(let id):
+            return "/issued-payment-card/v1/cards/\(String(id))/enable"
             
         case .deactivateCard(let id):
-            return "/payment-card/v1/cards/\(String(id))/deactivate"
+            return "/issued-payment-card/v1/cards/\(String(id))/deactivate"
             
         case .setPaymentCardLimit(let accountNumber, _):
-            return "/payment-card/v1/accounts/\(accountNumber)/card-limit"
+            return "/issued-payment-card/v1/accounts/\(accountNumber)/card-limit"
             
         case .retrievePaymentCardPIN(let id, _):
-            return "/payment-card/v1/cards/\(String(id))/pin"
+            return "/issued-payment-card/v1/cards/\(String(id))/pin"
             
         case .cancelPaymentCard(let id):
-            return "/payment-card/v1/cards/\(String(id))/cancel"
+            return "/issued-payment-card/v1/cards/\(String(id))/cancel"
         }
     }
     
