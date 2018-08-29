@@ -35,6 +35,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             return .post
             
         case .activateCard( _),
+             .enableCard(_ ),
              .deactivateCard( _),
              .setPaymentCardLimit( _, _),
              .retrievePaymentCardPIN( _, _),
