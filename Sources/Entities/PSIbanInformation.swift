@@ -6,15 +6,21 @@ public class PSIbanInformation: Mappable {
     public var bankName: String?
     public var bankCode: String?
     public var country: String?
+    public var branchCode: String?
+    public var sepaParticipant = false
+    public var sepaInstantParticipant = false
     
     required public init?(map: Map) {
 
     }
     
     public func mapping(map: Map) {
-        swift           <- map["swift"]
-        bankName        <- map["bank_name"]
-        bankCode        <- map["bank_code"]
-        country         <- map["country"]
+        swift                  <- map["swift"]
+        bankName               <- map["bank_name"]
+        bankCode               <- map["bank_code"]
+        country                <- map["country"]
+        branchCode             <- map["branch_code"]
+        sepaParticipant        <- map["sepa_participant"]
+        sepaInstantParticipant <- map["sepa_instant_participant"]
     }
 }
