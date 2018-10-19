@@ -1,7 +1,6 @@
 import ObjectMapper
 
 public class PSPaymentCardClient: Mappable {
-    
     public var id: Int
     public var userId: Int
     public var createdAt: TimeInterval
@@ -17,7 +16,6 @@ public class PSPaymentCardClient: Mappable {
             enabled = try map.value("enabled")
             displayName = try map.value("display_name")
             type = try map.value("type")
-            
         } catch {
             print(error)
             return nil

@@ -1,7 +1,6 @@
 import ObjectMapper
 
 public class PSPaymentCard: Mappable {
-    
     public var id: Int
     public var cardOwnerId: Int
     public var accountOwnerId: Int?
@@ -17,7 +16,7 @@ public class PSPaymentCard: Mappable {
     public var main: Bool?
     public var deliveryType: String?
     public var deliveryPrice: PSMoney?
-    public var account: PSPaymentCardAccount?
+    public var account: PSAccount?
     
     required public init?(map: Map) {
         do {

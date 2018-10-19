@@ -6,7 +6,6 @@ public class PSPaymentCardPIN: Mappable {
     required public init?(map: Map) {
         do {
             pinCode = try map.value("pin_code")
-            
         } catch {
             print(error)
             return nil
@@ -14,6 +13,5 @@ public class PSPaymentCardPIN: Mappable {
     }
     
     public func mapping(map: Map) {
-        pinCode      <- map["pin_code"]
     }
 }

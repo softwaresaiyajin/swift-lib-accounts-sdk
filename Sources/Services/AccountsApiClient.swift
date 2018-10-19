@@ -40,7 +40,6 @@ public class AccountsApiClient {
             .then(createPromise)
     }
     
-    
     // MARK: - Payment cards API
     public func createPaymentCard(_ card: PSCreatePaymentCardRequest) -> Promise<PSPaymentCard> {
         let request = createRequest(.createCard(card))
@@ -123,6 +122,46 @@ public class AccountsApiClient {
             .then(createPromise)
     }
     
+    public func getPaymentCardShippingAddress(accountNumber: String) -> Promise<PSPaymentCardShippingAddress> {
+        let request = createRequest(.getPaymentCardShippingAddress(accountNumber: accountNumber))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
+    public func getPaymentCardDeliveryPrices(country: String) -> Promise<[PSPaymentCardDeliveryPrice]> {
+        let request = createRequest(.getPaymentCardDeliveryPrices(country: country))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromiseWithArrayResult)
+    }
+    
+    public func getPaymentCardIssuePrice(country: String, clientType: String, cardOwnerId: String) -> Promise<PSPaymentCardIssuePrice> {
+        let request = createRequest(.getPaymentCardIssuePrice(country: country, clientType: clientType, cardOwnerId: cardOwnerId))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
+    public func getPaymentCardDeliveryDate(country: String, deliveryType: String) -> Promise<PSPaymentCardDeliveryDate> {
+        let request = createRequest(.getPaymentCardDeliveryDate(country: country, deliveryType: deliveryType))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
     public func cancelPaymentCard(id: Int) -> Promise<PSPaymentCard> {
         let request = createRequest(.cancelPaymentCard(id: id))
         makeRequest(apiRequest: request)
@@ -153,7 +192,7 @@ public class AccountsApiClient {
                         }
                         
                         if statusCode >= 200 && statusCode < 300 {
-                            apiRequest.pendingPromise.resolver.fulfill(responseData as! [String: Any])
+                            apiRequest.pendingPromise.resolver.fulfill(responseData)
                         } else {
                             let error = self.mapError(body: responseData)
                             if statusCode == 401 {

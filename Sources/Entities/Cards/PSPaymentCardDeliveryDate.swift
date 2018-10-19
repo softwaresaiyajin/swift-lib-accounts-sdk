@@ -1,13 +1,11 @@
 import ObjectMapper
 
-public class PSPaymentCardLimit: Mappable {
-    public var amount: PSMoney?
-    public var period: Int?
+public class PSPaymentCardDeliveryDate: Mappable {
+    public var deliveryDate: String
     
     required public init?(map: Map) {
         do {
-            amount = try map.value("amount")
-            period = try map.value("period")
+            deliveryDate = try map.value("delivery_date")
         } catch {
             print(error)
             return nil

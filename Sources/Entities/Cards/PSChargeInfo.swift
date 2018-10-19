@@ -6,7 +6,6 @@ public class PSChargeInfo: Mappable {
     required public init?(map: Map) {
         do {
             accountNumber = try map.value("account_number")
-            
         } catch {
             print(error)
             return nil

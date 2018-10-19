@@ -3,7 +3,6 @@ import ObjectMapper
 public class PSUpdatePaymentCardLimitRequest: Mappable {
     public var amount: String?
     public var currency: String?
-    public var period: Int?
     
     required public init?(map: Map) {
     }
@@ -11,10 +10,9 @@ public class PSUpdatePaymentCardLimitRequest: Mappable {
     public init() {
     }
     
-    public init(amount: String, currency: String, period: Int = 3600) {
+    public init(amount: String, currency: String) {
         self.amount = amount
         self.currency = currency
-        self.period = period
     }
     
     public func mapping(map: Map) {

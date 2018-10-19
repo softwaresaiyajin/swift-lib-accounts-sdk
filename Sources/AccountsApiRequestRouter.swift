@@ -8,6 +8,10 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getBalance(accountNumber: String)
     case getPaymentCards(cardsFilter: PSGetPaymentCardsFilterRequest)
     case getPaymentCardLimit(accountNumber: String)
+    case getPaymentCardShippingAddress(accountNumber: String)
+    case getPaymentCardDeliveryPrices(country: String)
+    case getPaymentCardIssuePrice(country: String, clientType: String, cardOwnerId: String)
+    case getPaymentCardDeliveryDate(country: String, deliveryType: String)
     
     // MARK: - POST
     case createCard(PSCreatePaymentCardRequest)
@@ -28,7 +32,11 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .getIbanInformation( _),
              .getBalance( _),
              .getPaymentCards( _),
-             .getPaymentCardLimit( _):
+             .getPaymentCardLimit( _),
+             .getPaymentCardShippingAddress( _),
+             .getPaymentCardDeliveryPrices( _),
+             .getPaymentCardIssuePrice( _, _, _),
+             .getPaymentCardDeliveryDate( _, _):
             return .get
             
         case .createCard( _):
@@ -59,6 +67,18 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .getPaymentCardLimit(let accountNumber):
             return "/issued-payment-card/v1/accounts/\(accountNumber)/card-limit"
             
+        case .getPaymentCardShippingAddress(let accountNumber):
+            return "/issued-payment-card/v1/accounts/\(accountNumber)/shipping-address"
+            
+        case .getPaymentCardDeliveryPrices(let country):
+            return "/issued-payment-card/v1/card-delivery-prices/\(country)"
+        
+        case .getPaymentCardIssuePrice(let country, let clientType, let cardOwnerId):
+            return "/issued-payment-card/v1/card-issue-price/\(country)/\(clientType)/\(cardOwnerId)"
+            
+        case .getPaymentCardDeliveryDate( _, _):
+            return "/issued-payment-card/v1/card-delivery-date"
+            
         case .createCard( _):
             return "/issued-payment-card/v1/cards"
             
@@ -85,20 +105,23 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     private var parameters: Parameters? {
         switch self {
  
-        case .getPaymentCards(let cardsFilter):
-            return cardsFilter.toJSON()
+            case .getPaymentCardDeliveryDate(let country, let deliveryType):
+                return ["country": country, "delivery_type": deliveryType]
             
-        case .createCard(let psCard):
-            return psCard.toJSON()
+            case .getPaymentCards(let cardsFilter):
+                return cardsFilter.toJSON()
             
-        case .setPaymentCardLimit(_, let cardLimit):
-            return cardLimit.toJSON()
+            case .createCard(let psCard):
+                return psCard.toJSON()
             
-        case .retrievePaymentCardPIN( _, let cvv):
-            return ["cvv2" :cvv]
+            case .setPaymentCardLimit(_, let cardLimit):
+                return cardLimit.toJSON()
             
-        default:
-            return nil
+            case .retrievePaymentCardPIN( _, let cvv):
+                return ["cvv2" :cvv]
+            
+            default:
+                return nil
         }
     }
     

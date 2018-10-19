@@ -1,6 +1,6 @@
 import ObjectMapper
 
-public class PSPaymentCardAccount: Mappable {
+public class PSAccount: Mappable {
     
     public var number: String
     public var clientId: Int
@@ -21,7 +21,8 @@ public class PSPaymentCardAccount: Mappable {
             active = try map.value("active")
             closed = try map.value("closed")
             type = try map.value("type")
-            
+            client = try map.value("client")
+            ibanList = try map.value("iban_list")
         } catch {
             print(error)
             return nil

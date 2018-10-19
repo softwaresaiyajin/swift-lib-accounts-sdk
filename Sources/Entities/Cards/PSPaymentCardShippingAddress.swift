@@ -1,7 +1,6 @@
 import ObjectMapper
 
 public class PSPaymentCardShippingAddress: Mappable {
-
     public var postalCode: String
     public var address: String
     public var city: String
@@ -13,7 +12,6 @@ public class PSPaymentCardShippingAddress: Mappable {
             address = try map.value("address")
             city = try map.value("city")
             country = try map.value("country")
-            
         } catch {
             print(error)
             return nil
