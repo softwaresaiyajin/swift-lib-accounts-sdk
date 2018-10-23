@@ -1,7 +1,7 @@
 import ObjectMapper
 
 public class PSPaymentCardLimit: Mappable {
-    public var amount: PSMoney?
+    public var amount: PSMoney
     public var period: Int?
     
     required public init?(map: Map) {
