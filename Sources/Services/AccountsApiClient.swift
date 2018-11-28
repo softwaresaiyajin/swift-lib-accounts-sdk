@@ -19,7 +19,16 @@ public class AccountsApiClient {
         self.credentials = credentials
     }
     
-    // MARK: - Paysera wallet information API
+    public func getLastUserQuestionnaire(userId: Int) -> Promise<PSQuestionnaire> {
+        let request = createRequest(.getLastUserQuestionnaire(userId: userId))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
     public func getIbanInformation(iban: String) -> Promise<PSIbanInformation> {
         let request = createRequest(.getIbanInformation(iban: iban))
         makeRequest(apiRequest: request)

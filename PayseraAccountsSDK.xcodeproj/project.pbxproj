@@ -49,6 +49,7 @@
 		88B25A52206A302800BE81C5 /* TokenRefresherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B25A4F206A302800BE81C5 /* TokenRefresherProtocol.swift */; };
 		88B25A59206A4C6A00BE81C5 /* PSIbanInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B25A58206A4C6A00BE81C5 /* PSIbanInformation.swift */; };
 		8933C7901EB5B82D000D00A4 /* PayseraAccountsSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* PayseraAccountsSDKTests.swift */; };
+		ED1091FE21A99BC400C78C79 /* PSQuestionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1091FD21A99BC400C78C79 /* PSQuestionnaire.swift */; };
 		ED753919206A8ADA004EA953 /* JWTDecode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B25A55206A361200BE81C5 /* JWTDecode.framework */; };
 		ED75391A206A8ADA004EA953 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B25A53206A315100BE81C5 /* ObjectMapper.framework */; };
 		ED75391B206A8ADA004EA953 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88774BC5205FE5A300AC5048 /* Alamofire.framework */; };
@@ -118,6 +119,7 @@
 		88B25A58206A4C6A00BE81C5 /* PSIbanInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PSIbanInformation.swift; sourceTree = "<group>"; };
 		8933C7891EB5B82A000D00A4 /* PayseraAccountsSDKTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayseraAccountsSDKTests.swift; sourceTree = "<group>"; };
 		AD2FAA261CD0B6D800659CF4 /* PayseraAccountsSDK.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PayseraAccountsSDK.plist; sourceTree = "<group>"; };
+		ED1091FD21A99BC400C78C79 /* PSQuestionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSQuestionnaire.swift; sourceTree = "<group>"; };
 		ED77A6FC2179B39B00723CD3 /* PSPaymentCardDeliveryDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardDeliveryDate.swift; sourceTree = "<group>"; };
 		EDC33BB7216E0E4B001C1925 /* PSPaymentCardIssuePrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardIssuePrice.swift; sourceTree = "<group>"; };
 		EDC33BB9216E0F0B001C1925 /* PSPaymentCardDeliveryPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardDeliveryPrice.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				1C50615F20B7EB9500F4CBE7 /* PSMetadata.swift */,
 				1C50615D20B7EA8900F4CBE7 /* PSMetadataAwareResponse.swift */,
 				880FCB9D206CF18500350F98 /* PSMoney.swift */,
+				ED1091FD21A99BC400C78C79 /* PSQuestionnaire.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				880FCB96206CC6F900350F98 /* PSBalanceInformation.swift in Sources */,
 				1CB5AC6D20B4090E006CDDE3 /* PSPaymentCard.swift in Sources */,
 				88B25A59206A4C6A00BE81C5 /* PSIbanInformation.swift in Sources */,
+				ED1091FE21A99BC400C78C79 /* PSQuestionnaire.swift in Sources */,
 				1CB5AC7520B43CCC006CDDE3 /* PSPaymentCardClient.swift in Sources */,
 				88B25A51206A302800BE81C5 /* AccountsApiRequest.swift in Sources */,
 				88B25A4B206A23EB00BE81C5 /* AuthenticationRequestAdapter.swift in Sources */,

@@ -4,6 +4,7 @@ import Alamofire
 public enum AccountsApiRequestRouter: URLRequestConvertible {
     
     // MARK: - GET
+    case getLastUserQuestionnaire(userId: Int)
     case getIbanInformation(iban: String)
     case getBalance(accountNumber: String)
     case getPaymentCards(cardsFilter: PSGetPaymentCardsFilterRequest)
@@ -30,6 +31,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     private var method: HTTPMethod {
         switch self {
         case .getIbanInformation( _),
+             .getLastUserQuestionnaire( _),
              .getBalance( _),
              .getPaymentCards( _),
              .getPaymentCardLimit( _),
@@ -54,6 +56,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     
     private var path: String {
         switch self {
+        
+        case .getLastUserQuestionnaire(let userId):
+            return "/questionnaire/rest/v1/user/\(userId)/questionnaire"
             
         case .getIbanInformation(let iban):
             return "/transfer/rest/v1/bank-information/\(iban)"
