@@ -90,6 +90,16 @@ public class AccountsApiClient {
             .then(createPromise)
     }
     
+    public func getCategorizedAccountNumbers(filter: PSGetCategorizedAccountNumbersFilterRequest) -> Promise<PSMetadataAwareResponse<PSCategorizedAccountNumbers>> {
+        let request = createRequest(.getCategorizedAccountNumbers(filter: filter))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
     public func retrievePaymentCardPIN(id: Int, cvv: String) -> Promise<PSPaymentCardPIN> {
         let request = createRequest(.retrievePaymentCardPIN(id: id, cvv: cvv))
         makeRequest(apiRequest: request)
@@ -101,7 +111,6 @@ public class AccountsApiClient {
     }
     
     public func getPaymentCards(cardsFilter: PSGetPaymentCardsFilterRequest) -> Promise<PSMetadataAwareResponse<PSPaymentCard>> {
-        
         let request = createRequest(.getPaymentCards(cardsFilter: cardsFilter))
         makeRequest(apiRequest: request)
         

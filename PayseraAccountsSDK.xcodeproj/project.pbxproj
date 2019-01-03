@@ -50,6 +50,8 @@
 		88B25A59206A4C6A00BE81C5 /* PSIbanInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B25A58206A4C6A00BE81C5 /* PSIbanInformation.swift */; };
 		8933C7901EB5B82D000D00A4 /* PayseraAccountsSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* PayseraAccountsSDKTests.swift */; };
 		ED1091FE21A99BC400C78C79 /* PSQuestionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1091FD21A99BC400C78C79 /* PSQuestionnaire.swift */; };
+		ED6413E021DE4BE300A35417 /* PSCategorizedAccountNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6413DF21DE4BE300A35417 /* PSCategorizedAccountNumbers.swift */; };
+		ED6413E221DE4D1700A35417 /* PSGetCategorizedAccountNumbersFilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6413E121DE4D1700A35417 /* PSGetCategorizedAccountNumbersFilterRequest.swift */; };
 		ED753919206A8ADA004EA953 /* JWTDecode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B25A55206A361200BE81C5 /* JWTDecode.framework */; };
 		ED75391A206A8ADA004EA953 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B25A53206A315100BE81C5 /* ObjectMapper.framework */; };
 		ED75391B206A8ADA004EA953 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88774BC5205FE5A300AC5048 /* Alamofire.framework */; };
@@ -120,6 +122,8 @@
 		8933C7891EB5B82A000D00A4 /* PayseraAccountsSDKTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayseraAccountsSDKTests.swift; sourceTree = "<group>"; };
 		AD2FAA261CD0B6D800659CF4 /* PayseraAccountsSDK.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PayseraAccountsSDK.plist; sourceTree = "<group>"; };
 		ED1091FD21A99BC400C78C79 /* PSQuestionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSQuestionnaire.swift; sourceTree = "<group>"; };
+		ED6413DF21DE4BE300A35417 /* PSCategorizedAccountNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSCategorizedAccountNumbers.swift; sourceTree = "<group>"; };
+		ED6413E121DE4D1700A35417 /* PSGetCategorizedAccountNumbersFilterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSGetCategorizedAccountNumbersFilterRequest.swift; sourceTree = "<group>"; };
 		ED77A6FC2179B39B00723CD3 /* PSPaymentCardDeliveryDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardDeliveryDate.swift; sourceTree = "<group>"; };
 		EDC33BB7216E0E4B001C1925 /* PSPaymentCardIssuePrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardIssuePrice.swift; sourceTree = "<group>"; };
 		EDC33BB9216E0F0B001C1925 /* PSPaymentCardDeliveryPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardDeliveryPrice.swift; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 				EDC33BB7216E0E4B001C1925 /* PSPaymentCardIssuePrice.swift */,
 				EDC33BB9216E0F0B001C1925 /* PSPaymentCardDeliveryPrice.swift */,
 				ED77A6FC2179B39B00723CD3 /* PSPaymentCardDeliveryDate.swift */,
+				ED6413DF21DE4BE300A35417 /* PSCategorizedAccountNumbers.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 				1C8E982020CE518B000770BB /* PSCreatePaymentCardRequest.swift */,
 				1C50616120B7F37E00F4CBE7 /* PSGetPaymentCardsFilterRequest.swift */,
 				1C9E7F72212D890300B6A66D /* PSUpdatePaymentCardLimitRequest.swift */,
+				ED6413E121DE4D1700A35417 /* PSGetCategorizedAccountNumbersFilterRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -403,6 +409,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED6413E221DE4D1700A35417 /* PSGetCategorizedAccountNumbersFilterRequest.swift in Sources */,
 				1C50616220B7F37E00F4CBE7 /* PSGetPaymentCardsFilterRequest.swift in Sources */,
 				88B25A52206A302800BE81C5 /* TokenRefresherProtocol.swift in Sources */,
 				1C7A2F7220D8E6C000195C0F /* PSPaymentCardLimit.swift in Sources */,
@@ -410,6 +417,7 @@
 				1C50615E20B7EA8900F4CBE7 /* PSMetadataAwareResponse.swift in Sources */,
 				88B25A48206A23EB00BE81C5 /* AccountsApiClientFactory.swift in Sources */,
 				1C8E982120CE518B000770BB /* PSCreatePaymentCardRequest.swift in Sources */,
+				ED6413E021DE4BE300A35417 /* PSCategorizedAccountNumbers.swift in Sources */,
 				EDC33BBA216E0F0B001C1925 /* PSPaymentCardDeliveryPrice.swift in Sources */,
 				EDC33BB8216E0E4B001C1925 /* PSPaymentCardIssuePrice.swift in Sources */,
 				88B25A50206A302800BE81C5 /* AccountsApiRequestRouter.swift in Sources */,

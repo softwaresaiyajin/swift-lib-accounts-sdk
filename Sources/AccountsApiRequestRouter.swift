@@ -13,6 +13,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getPaymentCardDeliveryPrices(country: String)
     case getPaymentCardIssuePrice(country: String, clientType: String, cardOwnerId: String)
     case getPaymentCardDeliveryDate(country: String, deliveryType: String)
+    case getCategorizedAccountNumbers(filter: PSGetCategorizedAccountNumbersFilterRequest)
     
     // MARK: - POST
     case createCard(PSCreatePaymentCardRequest)
@@ -38,7 +39,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getPaymentCardShippingAddress( _),
              .getPaymentCardDeliveryPrices( _),
              .getPaymentCardIssuePrice( _, _, _),
-             .getPaymentCardDeliveryDate( _, _):
+             .getPaymentCardDeliveryDate( _, _),
+             .getCategorizedAccountNumbers( _):
             return .get
             
         case .createCard( _):
@@ -84,6 +86,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .getPaymentCardDeliveryDate( _, _):
             return "/issued-payment-card/v1/card-delivery-date"
             
+        case .getCategorizedAccountNumbers( _):
+            return "/transfer/rest/v1/categorized-account-numbers"
+            
         case .createCard( _):
             return "/issued-payment-card/v1/cards"
             
@@ -115,6 +120,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
             case .getPaymentCards(let cardsFilter):
                 return cardsFilter.toJSON()
+            
+            case .getCategorizedAccountNumbers(let filter):
+                return filter.toJSON()
             
             case .createCard(let psCard):
                 return psCard.toJSON()
