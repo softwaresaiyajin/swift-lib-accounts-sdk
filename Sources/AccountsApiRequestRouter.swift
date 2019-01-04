@@ -19,6 +19,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case createCard(PSCreatePaymentCardRequest)
     
     // MARK: - PUT
+    case deactivateAccount(accountNumber: String)
+    case activateAccount(accountNumber: String)
     case activateCard(id: Int)
     case enableCard(id: Int)
     case deactivateCard(id: Int)
@@ -51,7 +53,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .deactivateCard( _),
              .setPaymentCardLimit( _, _),
              .retrievePaymentCardPIN( _, _),
-             .cancelPaymentCard( _):
+             .cancelPaymentCard( _),
+             .deactivateAccount( _),
+             .activateAccount( _):
             return .put
         }
     }
@@ -59,6 +63,12 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     private var path: String {
         switch self {
         
+        case .activateAccount(let accountNumber):
+            return "/account/rest/v1/accounts/\(accountNumber)/activate"
+        
+        case .deactivateAccount(let accountNumber):
+            return "/account/rest/v1/accounts/\(accountNumber)/deactivate"
+            
         case .getLastUserQuestionnaire(let userId):
             return "/questionnaire/rest/v1/user/\(userId)/questionnaire"
             

@@ -19,6 +19,26 @@ public class AccountsApiClient {
         self.credentials = credentials
     }
     
+    public func activateAccount(accountNumber: String) -> Promise<PSAccount> {
+        let request = createRequest(.activateAccount(accountNumber: accountNumber))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
+    public func deactivateAccount(accountNumber: String) -> Promise<PSAccount> {
+        let request = createRequest(.deactivateAccount(accountNumber: accountNumber))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
     public func getLastUserQuestionnaire(userId: Int) -> Promise<PSQuestionnaire> {
         let request = createRequest(.getLastUserQuestionnaire(userId: userId))
         makeRequest(apiRequest: request)
