@@ -75,7 +75,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .getIbanInformation(let iban):
             return "/transfer/rest/v1/bank-information/\(iban)"
             
-        case .getBalance(let accountNumber):
+        case .getBalance(let accountNumber, _):
             return "/account/rest/v1/accounts/\(accountNumber)/full-balance"
             
         case .getPaymentCards( _):
