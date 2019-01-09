@@ -6,7 +6,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     // MARK: - GET
     case getLastUserQuestionnaire(userId: Int)
     case getIbanInformation(iban: String)
-    case getBalance(accountNumber: String)
+    case getBalance(accountNumber: String, showHistoricalCurrencies: Bool)
     case getPaymentCards(cardsFilter: PSGetPaymentCardsFilterRequest)
     case getPaymentCardLimit(accountNumber: String)
     case getPaymentCardShippingAddress(accountNumber: String)
@@ -35,7 +35,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         switch self {
         case .getIbanInformation( _),
              .getLastUserQuestionnaire( _),
-             .getBalance( _),
+             .getBalance( _, _),
              .getPaymentCards( _),
              .getPaymentCardLimit( _),
              .getPaymentCardShippingAddress( _),
@@ -124,6 +124,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     
     private var parameters: Parameters? {
         switch self {
+            case .getBalance( _, let showHistoricalCurrencies):
+                return ["show_historical_currencies": showHistoricalCurrencies ? 1 : 0]
  
             case .getPaymentCardDeliveryDate(let country, let deliveryType):
                 return ["country": country, "delivery_type": deliveryType]

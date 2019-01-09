@@ -59,8 +59,15 @@ public class AccountsApiClient {
             .then(createPromise)
     }
     
-    public func getBalance(accountNumber: String) -> Promise<PSBalanceInformation> {
-        let request = createRequest(.getBalance(accountNumber: accountNumber))
+    public func getBalance(
+        accountNumber: String,
+        showHistoricalCurrencies: Bool = false
+    ) -> Promise<PSBalanceInformation> {
+        let request = createRequest(.getBalance(
+            accountNumber: accountNumber,
+            showHistoricalCurrencies: showHistoricalCurrencies
+        ))
+        
         makeRequest(apiRequest: request)
         
         return request
