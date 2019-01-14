@@ -15,6 +15,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getPaymentCardDeliveryDate(country: String, deliveryType: String)
     case getCategorizedAccountNumbers(filter: PSGetCategorizedAccountNumbersFilterRequest)
     case getTransfer(id: String)
+    case setAccountDefaultDescription(accountNumber: String, description: String)
     
     // MARK: - POST
     case createCard(PSCreatePaymentCardRequest)
@@ -57,7 +58,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .retrievePaymentCardPIN( _, _),
              .cancelPaymentCard( _),
              .deactivateAccount( _),
-             .activateAccount( _):
+             .activateAccount( _),
+             .setAccountDefaultDescription( _, _):
             return .put
         }
     }
@@ -70,6 +72,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         
         case .deactivateAccount(let accountNumber):
             return "/account/rest/v1/accounts/\(accountNumber)/deactivate"
+
+        case .setAccountDefaultDescription(let accountNumber, _):
+            return "/account/rest/v1/accounts/\(accountNumber)/descriptions"
             
         case .getLastUserQuestionnaire(let userId):
             return "/questionnaire/rest/v1/user/\(userId)/questionnaire"
@@ -150,6 +155,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             case .retrievePaymentCardPIN( _, let cvv):
                 return ["cvv2" :cvv]
             
+            case .setAccountDefaultDescription( _, let description):
+                return ["description": description]
+
             default:
                 return nil
         }
