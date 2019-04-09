@@ -9,7 +9,6 @@ public class PSAccount: Mappable {
     public var active: Bool
     public var closed: Bool
     public var type: String
-    public var client: PSPaymentCardClient?
     public var ibanList: [String]?
     
     required public init?(map: Map) {
@@ -21,7 +20,6 @@ public class PSAccount: Mappable {
             active = try map.value("active")
             closed = try map.value("closed")
             type = try map.value("type")
-            client = try map.value("client")
             ibanList = try map.value("iban_list")
         } catch {
             print(error)
@@ -37,7 +35,6 @@ public class PSAccount: Mappable {
         active          <- map["active"]
         closed          <- map["closed"]
         type            <- map["type"]
-        client          <- map["client"]
         ibanList        <- map["iban_list"]
     }
 }
