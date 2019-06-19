@@ -1,22 +1,27 @@
- import Foundation
+import Foundation
 import Alamofire
 import ObjectMapper
 import PromiseKit
+import PayseraCommonSDK
 
 public class AccountsApiClient {
     private let sessionManager: SessionManager
     private let tokenRefresher: TokenRefresherProtocol?
     private let credentials: AccountsApiCredentials
+    private let logger: PSLoggerProtocol?
+    
     private var requestsQueue = [AccountsApiRequest]()
     
     public init(
         sessionManager: SessionManager,
         credentials: AccountsApiCredentials,
-        tokenRefresher: TokenRefresherProtocol?
-        ) {
+        tokenRefresher: TokenRefresherProtocol?,
+        logger: PSLoggerProtocol? = nil
+    ) {
         self.sessionManager = sessionManager
         self.tokenRefresher = tokenRefresher
         self.credentials = credentials
+        self.logger = logger
     }
     
     public func getTransfer(id: String) -> Promise<PSTransfer> {
@@ -285,9 +290,18 @@ public class AccountsApiClient {
             if let tokenRefresher = tokenRefresher, tokenRefresher.isRefreshing() {
                 requestsQueue.append(apiRequest)
             } else {
+                self.logger?.log(level: .INFO, message: "--> \(apiRequest.requestEndPoint.urlRequest!.url!.absoluteString)")
+                
                 sessionManager
                     .request(apiRequest.requestEndPoint)
                     .responseJSON { (response) in
+                        var logMessage = "<-- \(apiRequest.requestEndPoint.urlRequest!.url!.absoluteString)"
+                        if let statusCode = response.response?.statusCode {
+                            logMessage += " (\(statusCode))"
+                        }
+                        
+                        self.logger?.log(level: .INFO, message: logMessage)
+                        
                         let responseData = response.result.value
                         
                         guard let statusCode = response.response?.statusCode else {

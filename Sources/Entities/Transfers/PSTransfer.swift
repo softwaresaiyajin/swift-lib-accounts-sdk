@@ -1,4 +1,5 @@
 import ObjectMapper
+import PayseraCommonSDK
 
 public class PSTransfer: Mappable {
     public let id: String

@@ -1,4 +1,5 @@
 import ObjectMapper
+import PayseraCommonSDK
 
 public class PSPaymentCardIssuePrice: Mappable {
     public var price: PSMoney
