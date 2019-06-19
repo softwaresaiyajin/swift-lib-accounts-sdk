@@ -378,12 +378,12 @@ public class AccountsApiClient {
         return Promise.value(body)
     }
 
-    private func mapError(body: Any?) -> PSAccountApiError {
-        if let apiError = Mapper<PSAccountApiError>().map(JSONObject: body) {
+    private func mapError(body: Any?) -> PSApiError {
+        if let apiError = Mapper<PSApiError>().map(JSONObject: body) {
             return apiError
         }
         
-        return PSAccountApiError.unknown()
+        return PSApiError.unknown()
     }
     
     private func createRequest(_ endpoint: AccountsApiRequestRouter) -> AccountsApiRequest {
