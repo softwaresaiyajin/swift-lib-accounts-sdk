@@ -184,4 +184,75 @@ class AccountsSDKTests: XCTestCase {
         wait(for: [expectation], timeout: 3.0)
         XCTAssertNotNil(object)
     }
+    
+    func testGetAuthorizations() {
+        let expectation = XCTestExpectation(description: "")
+        var object: Any?
+        //insert accountNumbers
+        let fitler = PSGetAuthorizationsFilterRequest(accountNumbers: [""])
+        accountsApiClient.getAuthorizations(filter: fitler).done { result in
+            object = result
+            print(result.items)
+            }.catch { error in
+                print(error)
+            }.finally {
+                expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
+    
+    func testCreateAuthorizations() {
+        let expectation = XCTestExpectation(description: "")
+        var object: Any?
+        let authorization = PSCreateAuthorizationRequest(accountNumber: "", userIds: [""], readPermission: true)
+        accountsApiClient.createAuthorization(authorization: authorization).done { result in
+            object = result
+            print(result)
+            }.catch { error in
+                print(error)
+            }.finally {
+                expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
+    
+    func testDeleteAuthorization() {
+        let expectation = XCTestExpectation(description: "")
+        var object: Any?
+        accountsApiClient.deleteAuthorization(id: "insert authorization id").done { result in
+            object = result
+            print(result)
+            }.catch { error in
+                print(error)
+            }.finally {
+                expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
+    
+    func testUpdateAuthorization() {
+        let expectation = XCTestExpectation(description: "")
+        var object: Any?
+      
+        let authorization = PSCreateAuthorizationRequest(accountNumber: "", userIds: [""], readPermission: false)
+        accountsApiClient
+            .updateAuthorization(id: "insert authorization id", authorization: authorization)
+            .done { result in
+                object = result
+                print(result)
+            }.catch { error in
+                print(error)
+            }.finally {
+                expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
 }
