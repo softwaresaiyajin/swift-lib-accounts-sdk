@@ -1,7 +1,7 @@
 import ObjectMapper
 
 public class PSTransferBeneficiary: Mappable {
-    public let name: String
+    public let name: String?
     public let type: String
     public var beneficiaryPayseraAccount: PSTransferBeneficiaryPayseraAccount?
     public var beneficiaryBankAccount: PSTransferBeneficiaryBankAccount?
@@ -10,15 +10,14 @@ public class PSTransferBeneficiary: Mappable {
 
     required public init?(map: Map) {
         do {
-            name = try map.value("name")
             type = try map.value("type")
-
         } catch {
             return nil
         }
     }
 
     public func mapping(map: Map) {
+        name                        <- map["name"]
         beneficiaryPayseraAccount   <- map["paysera_account"]
         beneficiaryBankAccount      <- map["bank_account"]
         beneficiaryTaxAccount       <- map["tax_account"]
