@@ -1,7 +1,7 @@
 import ObjectMapper
 
 public class PSTransferBeneficiary: Mappable {
-    public let name: String?
+    public var name: String?
     public let type: String
     public var beneficiaryPayseraAccount: PSTransferBeneficiaryPayseraAccount?
     public var beneficiaryBankAccount: PSTransferBeneficiaryBankAccount?
