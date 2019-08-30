@@ -8,6 +8,7 @@ public class PSTransfer: Mappable {
     public var initiator: PSTransferInitiator?
     public var createdAt: TimeInterval!
     public var performAt: TimeInterval?
+    public var performedAt: TimeInterval?
     public var failureStatus: PSTransferFailureStatus?
     public var outCommission: PSMoney?
     public var urgency: String?
@@ -34,6 +35,7 @@ public class PSTransfer: Mappable {
         cancelable      <- map["cancelable"]
         initiator       <- map["initiator"]
         performAt       <- map["perform_at"]
+        performedAt     <- map["performed_at"]
         createdAt       <- map["created_at"]
         status          <- map["status"]
         beneficiary     <- map["beneficiary"]
