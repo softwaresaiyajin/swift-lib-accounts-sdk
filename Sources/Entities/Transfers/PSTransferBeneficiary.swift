@@ -44,6 +44,8 @@ public class PSTransferBeneficiary: Mappable {
 public class PSTransferBeneficiaryTaxAccount: Mappable {
     public var identifier: String?
 
+    public init() {}
+    
     required public init?(map: Map) {
     }
 
@@ -60,6 +62,8 @@ public class PSTransferBeneficiaryBankAccount: Mappable {
     public var accountNumber: String?
     public var countryCode: String?
 
+    public init() {}
+    
     required public init?(map: Map) {
     }
 
@@ -77,17 +81,13 @@ public class PSTransferBeneficiaryPayseraAccount: Mappable {
     public var phone: String?
     public var email: String?
     public var accountNumber: String?
-    public var userId: Int
-
+    public var userId: Int!
+    
+    public init() {}
+    
     required public init?(map: Map) {
-        do {
-            userId = try map.value("user_id")
-
-        } catch {
-            return nil
-        }
     }
-
+    
     public func mapping(map: Map) {
         userId          <- map["user_id"]
         phone           <- map["phone"]
@@ -99,6 +99,8 @@ public class PSTransferBeneficiaryPayseraAccount: Mappable {
 public class PSTransferBeneficiaryWebmoneyAccount: Mappable {
     public var purse: String?
 
+    public init() {}
+    
     required public init?(map: Map) {
     }
 
@@ -110,6 +112,8 @@ public class PSTransferBeneficiaryWebmoneyAccount: Mappable {
 public class PSTransferBeneficiaryIdentifiers: Mappable {
     public var general: String?
 
+    public init() {}
+    
     required public init?(map: Map) {
     }
 
