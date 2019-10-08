@@ -5,6 +5,8 @@ public class PSTransfersResult: Mappable {
     public var metadata: PSMetadata?
     public var transfersResult: [PSTransfer]?
     
+    public init() {}
+    
     required public init?(map: Map) {
     }
     

@@ -5,6 +5,8 @@ public class PSTransferPurpose: Mappable {
     public var reference: String?
     public var detailsOptions: PSTransferDetailsOptions?
 
+    public init() {}
+    
     required public init?(map: Map) {
     }
 
@@ -19,6 +21,8 @@ public class PSTransferPurpose: Mappable {
 public class PSTransferDetailsOptions: Mappable {
     public var preserve: Bool?
 
+    public init() {}
+    
     required public init?(map: Map) {
     }
 

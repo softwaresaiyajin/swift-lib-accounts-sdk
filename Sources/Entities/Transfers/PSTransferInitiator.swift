@@ -4,6 +4,8 @@ public class PSTransferInitiator: Mappable {
     public var userId: Int?
     public var clientId: Int?
 
+    public init() {}
+    
     required public init?(map: Map) {
     }
 

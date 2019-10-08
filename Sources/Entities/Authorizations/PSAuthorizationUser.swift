@@ -5,6 +5,8 @@ public class PSAuthorizationUser: Mappable {
     public var userId: Int!
     public var displayName: String!
     
+    public init() {}
+    
     required public init?(map: Map) { }
     
     public func mapping(map: Map) {

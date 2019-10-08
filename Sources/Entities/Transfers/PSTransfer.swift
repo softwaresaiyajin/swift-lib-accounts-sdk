@@ -19,6 +19,8 @@ public class PSTransfer: Mappable {
     public var cancelable: Bool!
     public var notifications: [PSTransferNotification]?
 
+    public init() {}
+    
     required public init?(map: Map) {
         notifications = mapEnumeratedJSON(json: map.JSON["notifications"] as? [String: Any], enumeratedElementKey: "status")
     }

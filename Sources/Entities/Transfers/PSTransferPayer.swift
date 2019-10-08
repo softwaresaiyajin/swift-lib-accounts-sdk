@@ -4,6 +4,8 @@ public class PSTransferPayer: Mappable {
     public var accountNumber: String?
     public var reference: String?
 
+    public init() {}
+    
     required public init?(map: Map) {
     }
 

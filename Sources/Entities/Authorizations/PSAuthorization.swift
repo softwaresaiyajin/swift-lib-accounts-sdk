@@ -14,6 +14,8 @@ public class PSAuthorization: Mappable {
     public var validTo: Date?
     public var replacedAuthorizationId: String?
     
+    public init() {}
+    
     required public init?(map: Map) { }
     
     public func mapping(map: Map) {

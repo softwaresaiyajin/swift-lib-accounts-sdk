@@ -2,23 +2,21 @@ import ObjectMapper
 
 public class PSTransferBeneficiary: Mappable {
     public var name: String?
-    public let type: String
+    public var type: String!
     public var beneficiaryPayseraAccount: PSTransferBeneficiaryPayseraAccount?
     public var beneficiaryBankAccount: PSTransferBeneficiaryBankAccount?
     public var beneficiaryTaxAccount: PSTransferBeneficiaryTaxAccount?
     public var beneficiaryWebmoneyAccount: PSTransferBeneficiaryWebmoneyAccount?
     public var beneficiaryIdentifiers: PSTransferBeneficiaryIdentifiers?
 
+    public init() {}
+    
     required public init?(map: Map) {
-        do {
-            type = try map.value("type")
-        } catch {
-            return nil
-        }
     }
 
     public func mapping(map: Map) {
         name                        <- map["name"]
+        type                        <- map["type"]
         beneficiaryPayseraAccount   <- map["paysera_account"]
         beneficiaryBankAccount      <- map["bank_account"]
         beneficiaryTaxAccount       <- map["tax_account"]
