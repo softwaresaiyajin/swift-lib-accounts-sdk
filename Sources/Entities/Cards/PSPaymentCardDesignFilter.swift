@@ -9,6 +9,6 @@ public class PSPaymentCardDesignFilter: PSBaseFilter {
         super.mapping(map: map)
         
         accountOwnerId <- map["account_owner_id"]
-        clientType     <- map["clinet_type"]
+        clientType     <- map["client_type"]
     }
 }
