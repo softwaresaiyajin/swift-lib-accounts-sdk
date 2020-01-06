@@ -14,6 +14,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getIbanInformation(iban: String)
     case getBalance(accountNumber: String, showHistoricalCurrencies: Bool)
     case getPaymentCards(cardsFilter: PSGetPaymentCardsFilterRequest)
+    case getPaymentCardDesigns(filter: PSPaymentCardDesignFilter)
     case getPaymentCardLimit(accountNumber: String)
     case getPaymentCardShippingAddress(accountNumber: String)
     case getPaymentCardDeliveryPrices(country: String)
@@ -57,6 +58,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getLastUserQuestionnaire( _),
              .getBalance( _, _),
              .getPaymentCards( _),
+             .getPaymentCardDesigns( _),
              .getPaymentCardLimit( _),
              .getPaymentCardShippingAddress( _),
              .getPaymentCardDeliveryPrices( _),
@@ -130,6 +132,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .getPaymentCards( _):
             return "/issued-payment-card/v1/cards"
+            
+        case .getPaymentCardDesigns( _):
+            return "/issued-payment-card/v1/card-designs"
             
         case .getPaymentCardDeliveryCountries( _):
             return "/issued-payment-card/v1/card-delivery-countries"
@@ -212,6 +217,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .getPaymentCardDeliveryDate(let country, let deliveryType):
             return ["country": country, "delivery_type": deliveryType]
+        
+        case .getPaymentCardDesigns(let filter):
+            return filter.toJSON()
             
         case .getPaymentCardDeliveryCountries(let filter):
             return filter.toJSON()
