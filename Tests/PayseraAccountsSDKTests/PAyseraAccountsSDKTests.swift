@@ -274,4 +274,44 @@ class AccountsSDKTests: XCTestCase {
         wait(for: [expectation], timeout: 3.0)
         XCTAssertNotNil(object)
     }
+    
+    func testGetPaymentCardDeliveryPreference() {
+        var object: PSPaymentCardDeliveryPreference?
+        let expectation = XCTestExpectation(description: "")
+        
+        accountsApiClient
+            .getPaymentCardDeliveryPreference(accountNumber: "EVP9410007208697")
+            .done { deliveryPreference in
+                object = deliveryPreference
+            }.catch { error in
+                print(error)
+            }.finally { expectation.fulfill() }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
+    
+    func testSetPaymentCardDeliveryPreference() {
+        
+        var object: Any?
+        let expectation = XCTestExpectation(description: "")
+        
+        let preference = PSPaymentCardDeliveryPreference()
+        preference.ownerId = 9007334
+        preference.shippingAddress = PSPaymentCardShippingAddress(postalCode: "08426", address: "address", city: "Vilnius", country: "lt")
+        preference.deliveryType = "regular"
+        
+        accountsApiClient
+            .setPaymentCardDeliveryPreference(accountNumber: "EVP9410007208697",
+                                              preference: preference
+        )
+            .done { result in
+                object = result
+        }.catch { error in
+            print(error)
+        }.finally { expectation.fulfill() }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
 }
