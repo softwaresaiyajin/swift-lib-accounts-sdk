@@ -18,7 +18,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getPaymentCardLimit(accountNumber: String)
     case getPaymentCardShippingAddress(accountNumber: String)
     case getPaymentCardDeliveryPrices(country: String)
-    case getPaymentCardIssuePrice(country: String, clientType: String, cardOwnerId: String)
+    case getPaymentCardIssuePrice(filter: PSPaymentCardIssuePriceFilter)
     case getPaymentCardDeliveryDate(country: String, deliveryType: String)
     case getPaymentCardDeliveryCountries(filter: PSBaseFilter)
     case getCategorizedAccountNumbers(filter: PSGetCategorizedAccountNumbersFilterRequest)
@@ -28,6 +28,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getAuthorizations(PSGetAuthorizationsFilterRequest)
     case getPaymentPaymentCardExpiringCardOrderRestriction(accountNumber: String)
     case getPaymentCardDeliveryPreference(accountNumber: String)
+    
     
     // MARK: - POST
     case createCard(PSCreatePaymentCardRequest)
@@ -65,7 +66,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getPaymentCardLimit( _),
              .getPaymentCardShippingAddress( _),
              .getPaymentCardDeliveryPrices( _),
-             .getPaymentCardIssuePrice( _, _, _),
+             .getPaymentCardIssuePrice( _),
              .getPaymentCardDeliveryDate( _, _),
              .getCategorizedAccountNumbers( _),
              .getTransfer( _),
@@ -75,9 +76,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getAuthorizations( _),
              .getPaymentCardDeliveryPreference( _),
              .getPaymentPaymentCardExpiringCardOrderRestriction( _):
-            
             return .get
-            
+
         case .post(_),
              .createCard( _),
              .createAccount( _),
@@ -160,8 +160,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .getPaymentCardDeliveryPrices(let country):
             return "/issued-payment-card/v1/card-delivery-prices/\(country)"
             
-        case .getPaymentCardIssuePrice(let country, let clientType, let cardOwnerId):
-            return "/issued-payment-card/v1/card-issue-price/\(country)/\(clientType)/\(cardOwnerId)"
+        case .getPaymentCardIssuePrice( _):
+            return "/issued-payment-card/v1/card-account-issue-price"
             
         case .getPaymentCardDeliveryDate( _, _):
             return "/issued-payment-card/v1/card-delivery-date"
@@ -235,6 +235,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             return ["country": country, "delivery_type": deliveryType]
         
         case .getPaymentCardDesigns(let filter):
+            return filter.toJSON()
+
+        case .getPaymentCardIssuePrice(let filter):
             return filter.toJSON()
             
         case .getPaymentCardDeliveryCountries(let filter):
@@ -310,7 +313,6 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         default:
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
         }
-        
         return urlRequest
     }
 }

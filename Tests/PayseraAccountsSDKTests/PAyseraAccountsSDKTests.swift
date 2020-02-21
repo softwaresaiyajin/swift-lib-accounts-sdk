@@ -106,8 +106,12 @@ class AccountsSDKTests: XCTestCase {
         var object: PSPaymentCardIssuePrice?
         let expectation = XCTestExpectation(description: "")
         
+        let filter = PSPaymentCardIssuePriceFilter()
+        filter.cardAccountOwnerId = "6720691"
+        filter.cardOwnerId = "6720691"
+        
         accountsApiClient
-            .getPaymentCardIssuePrice(country: "lt", clientType: "natural", cardOwnerId: "165660")
+            .getPaymentCardIssuePrice(filter: filter)
             .done { issuePrice in
                 object = issuePrice
             }.catch { error in
