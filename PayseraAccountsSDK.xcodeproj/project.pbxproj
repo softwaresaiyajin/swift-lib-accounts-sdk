@@ -75,6 +75,7 @@
 		EDADCD4822FAD2BF00F96D4B /* PSTransferFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADCD4722FAD2BF00F96D4B /* PSTransferFilter.swift */; };
 		EDC33BB8216E0E4B001C1925 /* PSPaymentCardIssuePrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC33BB7216E0E4B001C1925 /* PSPaymentCardIssuePrice.swift */; };
 		EDC33BBA216E0F0B001C1925 /* PSPaymentCardDeliveryPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC33BB9216E0F0B001C1925 /* PSPaymentCardDeliveryPrice.swift */; };
+		EDD289C3242645290014B47C /* PSAvailableCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD289C2242645290014B47C /* PSAvailableCurrency.swift */; };
 		EDE54C5F23E2DA780099E8F5 /* PSPaymentCardExpiringCardOrderRestriction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE54C5E23E2DA780099E8F5 /* PSPaymentCardExpiringCardOrderRestriction.swift */; };
 		EDF44FAF22DC685D002F4522 /* PSPaymentCardDeliveryCountries.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF44FAE22DC685D002F4522 /* PSPaymentCardDeliveryCountries.swift */; };
 /* End PBXBuildFile section */
@@ -161,6 +162,7 @@
 		EDADCD4722FAD2BF00F96D4B /* PSTransferFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTransferFilter.swift; sourceTree = "<group>"; };
 		EDC33BB7216E0E4B001C1925 /* PSPaymentCardIssuePrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardIssuePrice.swift; sourceTree = "<group>"; };
 		EDC33BB9216E0F0B001C1925 /* PSPaymentCardDeliveryPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardDeliveryPrice.swift; sourceTree = "<group>"; };
+		EDD289C2242645290014B47C /* PSAvailableCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSAvailableCurrency.swift; sourceTree = "<group>"; };
 		EDE54C5E23E2DA780099E8F5 /* PSPaymentCardExpiringCardOrderRestriction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardExpiringCardOrderRestriction.swift; sourceTree = "<group>"; };
 		EDF44FAE22DC685D002F4522 /* PSPaymentCardDeliveryCountries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardDeliveryCountries.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -278,6 +280,7 @@
 				ED1091FD21A99BC400C78C79 /* PSQuestionnaire.swift */,
 				C49F76932278566C00C333E1 /* PSClientAllowance.swift */,
 				EDF44FAE22DC685D002F4522 /* PSPaymentCardDeliveryCountries.swift */,
+				EDD289C2242645290014B47C /* PSAvailableCurrency.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				ED6937E221E881100008A1BD /* PSTransferInitiator.swift in Sources */,
 				1CB5AC7720B43F57006CDDE3 /* PSChargeInfo.swift in Sources */,
 				1C7A2F7420D8EF0200195C0F /* PSPaymentCardPIN.swift in Sources */,
+				EDD289C3242645290014B47C /* PSAvailableCurrency.swift in Sources */,
 				ED6937E421E881340008A1BD /* PSTransferFailureStatus.swift in Sources */,
 				ED77A6FD2179B39B00723CD3 /* PSPaymentCardDeliveryDate.swift in Sources */,
 				1CB5AC7120B43635006CDDE3 /* PSAccount.swift in Sources */,

@@ -75,6 +75,10 @@ public class AccountsApiClient: PSBaseApiClient {
         return doRequest(requestRouter: AccountsApiRequestRouter.canUserFillQuestionnaire(userId: userId))
     }
     
+    public func getAvailableCurrencies(userId: Int) -> Promise<PSMetadataAwareResponse<PSAvailableCurrency>> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.getAvailableCurrencies(userId: userId))
+    }
+    
     // MARK: - Payment cards API
     public func createPaymentCard(_ card: PSCreatePaymentCardRequest) -> Promise<PSPaymentCard> {
         return doRequest(requestRouter: AccountsApiRequestRouter.createCard(card))
@@ -144,6 +148,14 @@ public class AccountsApiClient: PSBaseApiClient {
         return doRequest(requestRouter: AccountsApiRequestRouter.cancelPaymentCard(id: id))
     }
     
+    public func getPaymentCardDeliveryPreference(accountNumber: String) -> Promise<PSPaymentCardDeliveryPreference> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryPreference(accountNumber: accountNumber))
+    }
+    
+    public func setPaymentCardDeliveryPreference(accountNumber: String, preference: PSPaymentCardDeliveryPreference) -> Promise<PSPaymentCardDeliveryPreference> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.setPaymentCardDeliveryPreference(accountNumber: accountNumber, preference: preference))
+    }
+    
     // MARK: - Authorizations API
     public func getAuthorizations(filter: PSGetAuthorizationsFilterRequest) -> Promise<PSMetadataAwareResponse<PSAuthorization>> {
         return doRequest(requestRouter: AccountsApiRequestRouter.getAuthorizations(filter))
@@ -159,13 +171,5 @@ public class AccountsApiClient: PSBaseApiClient {
     
     public func updateAuthorization(id: String, authorization: PSCreateAuthorizationRequest) -> Promise<PSAuthorization> {
         return doRequest(requestRouter: AccountsApiRequestRouter.updateAuthorization(id: id, createAuthorizationRequest: authorization))
-    }
-    
-    public func getPaymentCardDeliveryPreference(accountNumber: String) -> Promise<PSPaymentCardDeliveryPreference> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryPreference(accountNumber: accountNumber))
-    }
-    
-    public func setPaymentCardDeliveryPreference(accountNumber: String, preference: PSPaymentCardDeliveryPreference) -> Promise<PSPaymentCardDeliveryPreference> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.setPaymentCardDeliveryPreference(accountNumber: accountNumber, preference: preference))
     }
 }
