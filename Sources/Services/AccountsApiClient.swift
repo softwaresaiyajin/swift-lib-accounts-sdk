@@ -75,8 +75,8 @@ public class AccountsApiClient: PSBaseApiClient {
         return doRequest(requestRouter: AccountsApiRequestRouter.canUserFillQuestionnaire(userId: userId))
     }
     
-    public func getAvailableCurrencies(userId: Int) -> Promise<PSMetadataAwareResponse<PSAvailableCurrency>> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getAvailableCurrencies(userId: userId))
+    public func getAvailableCurrencies(filter: PSAvailableCurrencyFilter) -> Promise<PSMetadataAwareResponse<PSAvailableCurrency>> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.getAvailableCurrencies(filter: filter))
     }
     
     // MARK: - Payment cards API

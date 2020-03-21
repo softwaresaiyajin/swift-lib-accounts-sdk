@@ -28,7 +28,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getAuthorizations(PSGetAuthorizationsFilterRequest)
     case getPaymentPaymentCardExpiringCardOrderRestriction(accountNumber: String)
     case getPaymentCardDeliveryPreference(accountNumber: String)
-    case getAvailableCurrencies(userId: Int)
+    case getAvailableCurrencies(filter: PSAvailableCurrencyFilter)
     
     
     // MARK: - POST
@@ -286,8 +286,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .setPaymentCardDeliveryPreference(_, let preference):
             return preference.toJSON()
             
-        case .getAvailableCurrencies(let userId):
-            return ["user_id": userId]
+        case .getAvailableCurrencies(let filter):
+            return filter.toJSON()
             
         default:
             return nil
