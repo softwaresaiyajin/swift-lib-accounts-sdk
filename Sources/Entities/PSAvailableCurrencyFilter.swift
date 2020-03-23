@@ -7,6 +7,6 @@ public class PSAvailableCurrencyFilter: PSBaseFilter {
     
     public override func mapping(map: Map) {
         super.mapping(map: map)
-        userId <- map["user_id"]
+        userId <- map["account_owner_user_id"]
     }
 }

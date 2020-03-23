@@ -20,6 +20,24 @@ class AccountsSDKTests: XCTestCase {
         accountsApiClient = AccountsApiClientFactory.createAccountsApiClient(credentials: credentials)
     }
     
+    func testGetAvailableCurrencies() {
+       var object: PSMetadataAwareResponse<PSAvailableCurrency>?
+       let expectation = XCTestExpectation(description: "")
+       
+       let filter = PSAvailableCurrencyFilter()
+       filter.userId = 165660
+       accountsApiClient
+           .getAvailableCurrencies(filter: filter)
+           .done { result in
+               object = result
+           }.catch { error in
+               print(error)
+           }.finally { expectation.fulfill() }
+       
+       wait(for: [expectation], timeout: 3.0)
+       XCTAssertNotNil(object)
+    }
+    
     func testGetPaymentCardDesigns() {
         var object: PSMetadataAwareResponse<PSPaymentCardDesign>?
         let expectation = XCTestExpectation(description: "")
