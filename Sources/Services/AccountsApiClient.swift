@@ -173,6 +173,10 @@ public class AccountsApiClient: PSBaseApiClient {
         return doRequest(requestRouter: AccountsApiRequestRouter.updateAuthorization(id: id, createAuthorizationRequest: authorization))
     }
     
+    public func getPurposeCodes() -> Promise<PSPurposeCodeCollection> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.getPurposeCodes)
+    }
+    
     public func deleteUserFromAuthorization(authorizationId: String, userId: String) -> Promise<Void> {
         return doRequest(requestRouter: AccountsApiRequestRouter.deleteUserFromAuthorization(authorizationId: authorizationId, userId: userId))
     }
