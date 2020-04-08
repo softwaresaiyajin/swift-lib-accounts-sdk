@@ -86,6 +86,22 @@ class AccountsSDKTests: XCTestCase {
         XCTAssertNotNil(object)
     }
     
+    func testGetIbanInformationForTarget2Participant() {
+        var object: PSIbanInformation?
+        let expectation = XCTestExpectation(description: "")
+        
+        accountsApiClient
+            .getIbanInformation(iban: "TR220011100000000073417181")
+            .done { ibanInfo in
+                object = ibanInfo
+            }.catch { error in
+                print(error)
+            }.finally { expectation.fulfill() }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertTrue((object?.target2Participant ?? false), "IbanInformation must be a target2Participant")
+    }
+    
     func testGetPaymentCardShippingAddress() {
         var object: PSPaymentCardShippingAddress?
         let expectation = XCTestExpectation(description: "")
@@ -370,7 +386,7 @@ class AccountsSDKTests: XCTestCase {
     func testDeleteUserFromAuthorization() {
         let expectation = XCTestExpectation(description: "")
         var object: Any?
-        accountsApiClient.deleteUserFromAuthorization(authorizationId: "insert_auth_id", userId: 111111).done { result in
+        accountsApiClient.deleteUserFromAuthorization(authorizationId: "insert_auth_id", userId: "0").done { result in
             object = result
         }.catch { error in
             print(error)
