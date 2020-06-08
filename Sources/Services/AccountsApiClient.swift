@@ -152,8 +152,8 @@ public class AccountsApiClient: PSBaseApiClient {
         return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryDate(country: country, deliveryType: deliveryType))
     }
     
-    public func getPaymentPaymentCardExpiringCardOrderRestriction(accountNumber: String) -> Promise<PSPaymentCardExpiringCardOrderRestriction> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentPaymentCardExpiringCardOrderRestriction(accountNumber: accountNumber))
+    public func getPaymentCardExpiringCardOrderRestriction(accountNumber: String) -> Promise<PSPaymentCardOrderRestriction> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardExpiringCardOrderRestriction(accountNumber: accountNumber))
     }
     
     public func cancelPaymentCard(id: Int) -> Promise<PSPaymentCard> {
@@ -204,7 +204,7 @@ public class AccountsApiClient: PSBaseApiClient {
     public func getCardOrderRestrictions(
         cardAccountOwnerId: Int,
         cardOwnerId: Int
-    ) -> Promise<PSMetadataAwareResponse<PSPaymentCardExpiringCardOrderRestriction>> {
+    ) -> Promise<PSMetadataAwareResponse<PSPaymentCardOrderRestriction>> {
         return doRequest(
             requestRouter: AccountsApiRequestRouter.getCardOrderRestrictions(
                 cardAccountOwnerId: cardAccountOwnerId,

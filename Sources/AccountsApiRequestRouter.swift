@@ -26,7 +26,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case canUserOrderCard(userId: Int)
     case canUserFillQuestionnaire(userId: Int)
     case getAuthorizations(PSGetAuthorizationsFilterRequest)
-    case getPaymentPaymentCardExpiringCardOrderRestriction(accountNumber: String)
+    case getPaymentCardExpiringCardOrderRestriction(accountNumber: String)
     case getPaymentCardDeliveryPreference(accountNumber: String)
     case getAvailableCurrencies(filter: PSAvailableCurrencyFilter)
     case getPurposeCodes
@@ -83,7 +83,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getPaymentCardDeliveryCountries,
              .getAuthorizations,
              .getPaymentCardDeliveryPreference,
-             .getPaymentPaymentCardExpiringCardOrderRestriction,
+             .getPaymentCardExpiringCardOrderRestriction,
              .getAvailableCurrencies,
              .getPurposeCodes,
              .getSigningLimits,
@@ -171,7 +171,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .getPaymentCardDeliveryPreference(let accountNumber):
             return "/issued-payment-card/v1/accounts/\(accountNumber)/card-delivery-preference"
             
-        case .getPaymentPaymentCardExpiringCardOrderRestriction(let accountNumber):
+        case .getPaymentCardExpiringCardOrderRestriction(let accountNumber):
             return "/issued-payment-card/v1/accounts/\(accountNumber)/expiring-card-reorder-restriction"
 
         case .getPaymentCardDeliveryPrices(let country):
