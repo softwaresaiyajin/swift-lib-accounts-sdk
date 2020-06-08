@@ -466,4 +466,18 @@ class AccountsSDKTests: XCTestCase {
         wait(for: [expectation], timeout: 5.0)
         XCTAssertNotNil(object)
     }
+    
+    func testGetCardOrderRestrictions() {
+        let expectation = XCTestExpectation(description: "")
+        var object: PSMetadataAwareResponse<PSPaymentCardExpiringCardOrderRestriction>?
+        accountsApiClient
+            .getCardOrderRestrictions(cardAccountOwnerId: 0, cardOwnerId: 0)
+            .done { result in
+                object = result
+            }.catch { error in
+                print(error)
+            }.finally { expectation.fulfill() }
+        wait(for: [expectation], timeout: 5.0)
+        XCTAssertNotNil(object)
+    }
 }

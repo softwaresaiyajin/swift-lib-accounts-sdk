@@ -32,6 +32,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getPurposeCodes
     case getSigningLimits(userId: Int)
     case getConversionTransfers(filter: PSConversionTransferFilter)
+    case getCardOrderRestrictions(cardAccountOwnerId: Int, cardOwnerId: Int)
     
     // MARK: - POST
     case createCard(PSCreatePaymentCardRequest)
@@ -86,7 +87,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getAvailableCurrencies,
              .getPurposeCodes,
              .getSigningLimits,
-             .getConversionTransfers:
+             .getConversionTransfers,
+             .getCardOrderRestrictions:
             return .get
 
         case .post,
@@ -183,6 +185,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .getCategorizedAccountNumbers:
             return "/transfer/rest/v1/categorized-account-numbers"
+            
+        case .getCardOrderRestrictions:
+            return "/issued-payment-card/v1/card-order-restrictions"
             
         case .createCard:
             return "/issued-payment-card/v1/cards"
@@ -286,6 +291,12 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .getCategorizedAccountNumbers(let filter):
             return filter.toJSON()
+            
+        case .getCardOrderRestrictions(let cardAccountOwnerId, let cardOwnerId):
+            return [
+                "card_account_owner_id": cardAccountOwnerId,
+                "card_owner_id": cardOwnerId
+            ]
             
         case .createCard(let psCard):
             return psCard.toJSON()

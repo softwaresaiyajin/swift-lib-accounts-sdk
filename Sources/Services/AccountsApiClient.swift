@@ -200,4 +200,16 @@ public class AccountsApiClient: PSBaseApiClient {
     public func validateAuthorization(accountNumber: String, userIds: [String]) -> Promise<Void> {
         return doRequest(requestRouter: AccountsApiRequestRouter.validateAuthorization(accountNumber: accountNumber, userIds: userIds))
     }
+
+    public func getCardOrderRestrictions(
+        cardAccountOwnerId: Int,
+        cardOwnerId: Int
+    ) -> Promise<PSMetadataAwareResponse<PSPaymentCardExpiringCardOrderRestriction>> {
+        return doRequest(
+            requestRouter: AccountsApiRequestRouter.getCardOrderRestrictions(
+                cardAccountOwnerId: cardAccountOwnerId,
+                cardOwnerId: cardOwnerId
+            )
+        )
+    }
 }
