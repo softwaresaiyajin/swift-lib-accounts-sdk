@@ -1,7 +1,7 @@
 import Foundation
 import ObjectMapper
 
-public class PSPaymentCardExpiringCardOrderRestriction: Mappable {
+public class PSPaymentCardOrderRestriction: Mappable {
     
     public var orderingAllowed: Bool!
     public var reason: String?

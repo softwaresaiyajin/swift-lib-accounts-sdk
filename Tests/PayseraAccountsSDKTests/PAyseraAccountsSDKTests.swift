@@ -344,11 +344,11 @@ class AccountsSDKTests: XCTestCase {
     }
     
     func testGetPaymentCardExpiringCardOrderRestriction() {
-        var object: PSPaymentCardExpiringCardOrderRestriction?
+        var object: PSPaymentCardOrderRestriction?
         let expectation = XCTestExpectation(description: "")
         
         accountsApiClient
-            .getPaymentPaymentCardExpiringCardOrderRestriction(accountNumber: "EVP3710004041407")
+            .getPaymentCardExpiringCardOrderRestriction(accountNumber: "EVP3710004041407")
             .done { r in
                 object = r
             }.catch { error in
@@ -458,6 +458,20 @@ class AccountsSDKTests: XCTestCase {
         var object: PSConversionTransfer?
         accountsApiClient
             .cancelConversionTransfer(transferId: "")
+            .done { result in
+                object = result
+            }.catch { error in
+                print(error)
+            }.finally { expectation.fulfill() }
+        wait(for: [expectation], timeout: 5.0)
+        XCTAssertNotNil(object)
+    }
+    
+    func testGetCardOrderRestrictions() {
+        let expectation = XCTestExpectation(description: "")
+        var object: PSMetadataAwareResponse<PSPaymentCardOrderRestriction>?
+        accountsApiClient
+            .getCardOrderRestrictions(cardAccountOwnerId: 0, cardOwnerId: 0)
             .done { result in
                 object = result
             }.catch { error in
