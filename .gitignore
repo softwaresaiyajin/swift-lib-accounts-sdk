@@ -1,4 +1,5 @@
-Carthage
-xcuserdata
-build
-PayseraAccountsSDK.framework
+.DS_Store
+/.build
+/Packages
+/*.xcodeproj
+xcuserdata/

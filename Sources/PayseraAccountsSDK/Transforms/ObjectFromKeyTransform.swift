@@ -1,3 +1,4 @@
+import Foundation
 import ObjectMapper
 
 class ObjectFromKeyTransform<ObjectType: BaseMappable>: TransformType {
@@ -16,7 +17,7 @@ class ObjectFromKeyTransform<ObjectType: BaseMappable>: TransformType {
         return json
             .compactMapValues { $0 as? [String: Any] }
             .compactMap { (key, jsonObject) -> ObjectType? in
-                let object = ObjectType.init(JSON: jsonObject)
+                let object = Mapper<ObjectType>().map(JSON: jsonObject)
                 object?[keyPath: rootKeyPath] = key
                 return object
             }

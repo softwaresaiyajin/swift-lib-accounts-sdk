@@ -1,7 +1,7 @@
+import Foundation
 import ObjectMapper
 
 public class PSGetAuthorizationsFilterRequest: Mappable {
-    
     public var accountNumbers: [String]!
     public var validFrom: Date?
     public var validTo: Date?
