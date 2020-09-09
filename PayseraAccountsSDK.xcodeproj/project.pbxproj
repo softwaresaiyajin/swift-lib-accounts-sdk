@@ -36,6 +36,7 @@
 		6068EF3D24168CDE00496B4A /* PSPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6068EF3C24168CDE00496B4A /* PSPassword.swift */; };
 		60AA35D9243F6AA900F857CD /* ObjectFromKeyTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AA35D8243F6AA900F857CD /* ObjectFromKeyTransform.swift */; };
 		60F625732490BEE300271658 /* PSAuthorizationUserValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F625722490BEE300271658 /* PSAuthorizationUserValidationResult.swift */; };
+		741CC7A925088975004BDEED /* PSBankParticipationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741CC7A825088975004BDEED /* PSBankParticipationInfo.swift */; };
 		745D4FE224345FB3002403D9 /* PSPurposeCodeCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745D4FE124345FB3002403D9 /* PSPurposeCodeCollection.swift */; };
 		7CAB9EC623F691060043CEF9 /* PSPaymentCardIssuePriceFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAB9EC523F691060043CEF9 /* PSPaymentCardIssuePriceFilter.swift */; };
 		880FCB92206CB29700350F98 /* PayseraAccountsSDK.plist in Resources */ = {isa = PBXBuildFile; fileRef = 880FCB91206CB29700350F98 /* PayseraAccountsSDK.plist */; };
@@ -129,6 +130,7 @@
 		6068EF3C24168CDE00496B4A /* PSPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPassword.swift; sourceTree = "<group>"; };
 		60AA35D8243F6AA900F857CD /* ObjectFromKeyTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectFromKeyTransform.swift; sourceTree = "<group>"; };
 		60F625722490BEE300271658 /* PSAuthorizationUserValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSAuthorizationUserValidationResult.swift; sourceTree = "<group>"; };
+		741CC7A825088975004BDEED /* PSBankParticipationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSBankParticipationInfo.swift; sourceTree = "<group>"; };
 		745D4FE124345FB3002403D9 /* PSPurposeCodeCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPurposeCodeCollection.swift; sourceTree = "<group>"; };
 		7CAB9EC523F691060043CEF9 /* PSPaymentCardIssuePriceFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardIssuePriceFilter.swift; sourceTree = "<group>"; };
 		880FCB91206CB29700350F98 /* PayseraAccountsSDK.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PayseraAccountsSDK.plist; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				EDD289C2242645290014B47C /* PSAvailableCurrency.swift */,
 				ED1D74132426484F00F09F98 /* PSAvailableCurrencyFilter.swift */,
 				745D4FE124345FB3002403D9 /* PSPurposeCodeCollection.swift */,
+				741CC7A825088975004BDEED /* PSBankParticipationInfo.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				C438A73622DF3DFA002B3640 /* PSSignPermission.swift in Sources */,
 				60F625732490BEE300271658 /* PSAuthorizationUserValidationResult.swift in Sources */,
 				C49F76942278566C00C333E1 /* PSClientAllowance.swift in Sources */,
+				741CC7A925088975004BDEED /* PSBankParticipationInfo.swift in Sources */,
 				1CB5AC6F20B43186006CDDE3 /* PSPaymentCardShippingAddress.swift in Sources */,
 				ED6937E021E8804D0008A1BD /* PSTransferBeneficiary.swift in Sources */,
 				ED1D74142426484F00F09F98 /* PSAvailableCurrencyFilter.swift in Sources */,
