@@ -214,4 +214,12 @@ public class AccountsApiClient: PSBaseApiClient {
             )
         )
     }
+    
+    public func getBankParticipationInformation(
+        swift: String
+    ) -> Promise<PSBankParticipationInformation> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.getBankParticipationInfo(swift: swift)
+        )
+    }
 }
