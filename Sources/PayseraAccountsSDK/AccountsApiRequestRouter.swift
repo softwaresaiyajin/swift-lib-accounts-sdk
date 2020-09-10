@@ -33,6 +33,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getSigningLimits(userId: Int)
     case getConversionTransfers(filter: PSConversionTransferFilter)
     case getCardOrderRestrictions(cardAccountOwnerId: Int, cardOwnerId: Int)
+    case getBankParticipationInfo(swift: String)
+    
     
     // MARK: - POST
     case createCard(PSCreatePaymentCardRequest)
@@ -88,7 +90,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getPurposeCodes,
              .getSigningLimits,
              .getConversionTransfers,
-             .getCardOrderRestrictions:
+             .getCardOrderRestrictions,
+             .getBankParticipationInfo:
             return .get
 
         case .post,
@@ -188,6 +191,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .getCardOrderRestrictions:
             return "/issued-payment-card/v1/card-order-restrictions"
+            
+        case .getBankParticipationInfo(let swift):
+            return "/transfer/rest/v1/bank-participation/\(swift)"
             
         case .createCard:
             return "/issued-payment-card/v1/cards"
