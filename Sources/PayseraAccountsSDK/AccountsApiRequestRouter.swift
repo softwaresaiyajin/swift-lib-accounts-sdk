@@ -57,6 +57,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case setPaymentCardLimit(accountNumber: String, cardLimit: PSUpdatePaymentCardLimitRequest)
     case retrievePaymentCardPIN(id: Int, cvv: String)
     case cancelPaymentCard(id: Int)
+    case provisionCardForXPay(id: Int, request: PSXpayTokenRequest)
+    case activateCardForXPay(id: Int)
     case setAccountDefaultDescription(accountNumber: String, description: String)
     case setAccountDescription(userId: Int, accountNumber: String, description: String)
     case updateAuthorization(id: String, createAuthorizationRequest: PSCreateAuthorizationRequest)
@@ -119,6 +121,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .setPaymentCardLimit,
              .retrievePaymentCardPIN,
              .cancelPaymentCard,
+             .provisionCardForXPay,
+             .activateCardForXPay,
              .deactivateAccount,
              .activateAccount,
              .setAccountDefaultDescription,
@@ -226,6 +230,12 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .cancelPaymentCard(let id):
             return "/issued-payment-card/v1/cards/\(String(id))/cancel"
+
+        case .provisionCardForXPay(let id, _):
+            return "/issued-payment-card/v1/cards/\(String(id))/xpay/add"
+
+        case .activateCardForXPay(let id):
+            return "/issued-payment-card/v1/cards/\(String(id))/xpay/activate"
             
         case .createAccount(let userId):
             return "/account/rest/v1/users/\(String(userId))/accounts"
@@ -342,6 +352,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .retrievePaymentCardPIN( _, let cvv):
             return ["cvv2" :cvv]
             
+        case .provisionCardForXPay(_, let request):
+            return request.toJSON()
+
         case .setAccountDefaultDescription( _, let description):
             return ["description": description]
             

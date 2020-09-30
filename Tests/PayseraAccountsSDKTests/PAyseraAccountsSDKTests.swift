@@ -118,6 +118,46 @@ class AccountsSDKTests: XCTestCase {
         XCTAssertNotNil(object)
     }
     
+    func testActivateCardForXPay() {
+        var object: PSXpayToken?
+        let expectation = XCTestExpectation(description: "")
+
+        accountsApiClient
+            .activateCardForXPay(id: 691641)
+            .done { result in
+                object = result
+            }.catch { error in
+                print(error)
+            }.finally { expectation.fulfill() }
+
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
+
+    func testProvisionCardForXPay() {
+        var object: PSXpayToken?
+        let expectation = XCTestExpectation(description: "")
+
+        let cardId = 691641
+        let request = PSXpayTokenRequest(
+            cardId: cardId,
+            certificateLeaf: "test",
+            certificateSubCA: "test",
+            nonce: "test",
+            nonceSignature: "test"
+        )
+        accountsApiClient
+            .provisionCardForXPay(id: cardId, request: request)
+            .done { result in
+                object = result
+            }.catch { error in
+                print(error)
+            }.finally { expectation.fulfill() }
+
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
+
     func testGetPaymentCardDeliveryPrices() {
         var object: [PSPaymentCardDeliveryPrice]?
         let expectation = XCTestExpectation(description: "")
@@ -182,7 +222,7 @@ class AccountsSDKTests: XCTestCase {
             .done { response in
                 object = response
                 
-                print(object)
+                print(object ?? "N/A")
             }.catch { error in
                 print(error)
             }.finally { expectation.fulfill() }
@@ -262,7 +302,7 @@ class AccountsSDKTests: XCTestCase {
         let fitler = PSGetAuthorizationsFilterRequest(accountNumbers: [""])
         accountsApiClient.getAuthorizations(filter: fitler).done { result in
             object = result
-            print(result.items)
+            print(result.items ?? "N/A")
             }.catch { error in
                 print(error)
             }.finally {

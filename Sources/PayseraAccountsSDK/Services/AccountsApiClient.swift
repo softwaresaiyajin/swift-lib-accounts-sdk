@@ -160,6 +160,14 @@ public class AccountsApiClient: PSBaseApiClient {
         return doRequest(requestRouter: AccountsApiRequestRouter.cancelPaymentCard(id: id))
     }
     
+    public func activateCardForXPay(id: Int) -> Promise<PSXpayToken> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.activateCardForXPay(id: id))
+    }
+
+    public func provisionCardForXPay(id: Int, request: PSXpayTokenRequest) -> Promise<PSXpayToken> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.provisionCardForXPay(id: id, request: request))
+    }
+
     public func getPaymentCardDeliveryPreference(accountNumber: String) -> Promise<PSPaymentCardDeliveryPreference> {
         return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryPreference(accountNumber: accountNumber))
     }
