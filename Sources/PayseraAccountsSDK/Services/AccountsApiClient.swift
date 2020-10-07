@@ -49,8 +49,8 @@ public class AccountsApiClient: PSBaseApiClient {
         return doRequest(requestRouter: AccountsApiRequestRouter.getLastUserQuestionnaire(userId: userId))
     }
     
-    public func getIbanInformation(iban: String) -> Promise<PSIbanInformation> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getIbanInformation(iban: iban))
+    public func getIbanInformation(iban: String, currency: String? = nil) -> Promise<PSIbanInformation> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.getIbanInformation(iban: iban, currency: currency))
     }
     
     public func getBalance(

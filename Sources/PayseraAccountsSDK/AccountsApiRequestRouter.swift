@@ -11,7 +11,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     
     // MARK: - GET
     case getLastUserQuestionnaire(userId: Int)
-    case getIbanInformation(iban: String)
+    case getIbanInformation(iban: String, currency: String?)
     case getBalance(accountNumber: String, showHistoricalCurrencies: Bool)
     case getPaymentCards(cardsFilter: PSGetPaymentCardsFilterRequest)
     case getPaymentCardDesigns(filter: PSPaymentCardDesignFilter)
@@ -162,7 +162,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .getLastUserQuestionnaire(let userId):
             return "/questionnaire/rest/v1/user/\(userId)/questionnaire"
             
-        case .getIbanInformation(let iban):
+        case .getIbanInformation(let iban, _):
             return "/transfer/rest/v1/bank-information/\(iban)"
             
         case .getTransfer(let id):
@@ -315,6 +315,10 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .put(_, let parameters),
              .delete(_, let parameters):
             return parameters
+            
+        case .getIbanInformation(_, let currency):
+            guard let currency = currency else { return [:] }
+            return ["currency": currency]
             
         case .getBalance( _, let showHistoricalCurrencies):
             return ["show_historical_currencies": showHistoricalCurrencies ? 1 : 0]
