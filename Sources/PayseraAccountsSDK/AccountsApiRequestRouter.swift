@@ -38,6 +38,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getBullionOptions(filter: PSBaseFilter)
     case getUnallocatedBullionBalance(filter: PSBullionFilter)
     case getSpreadPercentage(request: PSSpreadPercentageRequest)
+    case getInformationRequests(filter: PSInformationRequestFilter)
     
     // MARK: - POST
     case createCard(PSCreatePaymentCardRequest)
@@ -47,6 +48,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case cancelConversionTransfer(transferId: String)
     case buyBullion(identifier: String, accountNumber: String)
     case sellBullion(hash: String)
+    case uploadInformationRequestFile(id: String, file: PSInformationRequestFile)
     
     // MARK: - PUT
     case deactivateAccount(accountNumber: String)
@@ -64,6 +66,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case updateAuthorization(id: String, createAuthorizationRequest: PSCreateAuthorizationRequest)
     case setPaymentCardDeliveryPreference(accountNumber: String, preference: PSPaymentCardDeliveryPreference)
     case validateAuthorizationUsers(userIds: [Int])
+    case uploadInformationRequestAnswers(id: String, answers: PSInformationRequestAnswers)
     
     // MARK: - Delete
     case deleteAuthorization(id: String)
@@ -102,7 +105,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getBullionItems,
              .getBullionOptions,
              .getUnallocatedBullionBalance,
-             .getSpreadPercentage:
+             .getSpreadPercentage,
+             .getInformationRequests:
             return .get
 
         case .post,
@@ -110,7 +114,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .createAccount,
              .createAuthorization,
              .buyBullion,
-             .sellBullion:
+             .sellBullion,
+             .uploadInformationRequestFile:
             return .post
             
         case .put,
@@ -131,7 +136,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .setPaymentCardDeliveryPreference,
              .validateAuthorizationUsers,
              .signConversionTransfer,
-             .cancelConversionTransfer:
+             .cancelConversionTransfer,
+             .uploadInformationRequestAnswers:
             return .put
 
         case .delete,
@@ -305,6 +311,15 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
 
         case .getSpreadPercentage:
             return "/currency-exchange/rest/v1/currency-exchanges/spread-percentage"
+            
+        case .getInformationRequests:
+            return "/transfer-aml-information/rest/v1/information-requests"
+            
+        case .uploadInformationRequestFile(let id, _):
+            return "/transfer-aml-information/rest/v1/information-requests/\(id)/files"
+            
+        case .uploadInformationRequestAnswers(let id, _):
+            return "/transfer-aml-information/rest/v1/information-requests/\(id)/answer"
         }
     }
     
@@ -410,6 +425,15 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
 
         case .getSpreadPercentage(let request):
             return request.toJSON()
+            
+        case .getInformationRequests(let filter):
+            return filter.toJSON()
+            
+        case .uploadInformationRequestFile(_, let file):
+            return file.toJSON()
+            
+        case .uploadInformationRequestAnswers(_, let answers):
+            return answers.toJSON()
             
         default:
             return nil
