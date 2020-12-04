@@ -718,4 +718,20 @@ class AccountsSDKTests: XCTestCase {
         wait(for: [expectation], timeout: 3.0)
         XCTAssertNotNil(object)
     }
+    
+    func testGetClientPermissions() {
+        let expectation = XCTestExpectation(description: "")
+        var object: [PSClientPermission]?
+        accountsApiClient
+            .getClientPermissions()
+            .done {
+                object = $0
+            }
+            .catch {
+                error in print(error)
+            }
+            .finally { expectation.fulfill() }
+        wait(for: [expectation], timeout: 5.0)
+        XCTAssertNotNil(object)
+    }
 }

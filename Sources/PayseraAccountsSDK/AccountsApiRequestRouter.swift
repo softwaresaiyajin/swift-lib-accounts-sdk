@@ -39,6 +39,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getUnallocatedBullionBalance(filter: PSBullionFilter)
     case getSpreadPercentage(request: PSSpreadPercentageRequest)
     case getInformationRequests(filter: PSInformationRequestFilter)
+    case getClientPermissions
     
     // MARK: - POST
     case createCard(PSCreatePaymentCardRequest)
@@ -106,7 +107,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getBullionOptions,
              .getUnallocatedBullionBalance,
              .getSpreadPercentage,
-             .getInformationRequests:
+             .getInformationRequests,
+             .getClientPermissions:
             return .get
 
         case .post,
@@ -215,6 +217,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .getBankParticipationInfo(let swift):
             return "/transfer/rest/v1/bank-participation/\(swift)"
+            
+        case .getClientPermissions:
+            return "/client-allowance/rest/v1/client-allowances"
             
         case .createCard:
             return "/issued-payment-card/v1/cards"

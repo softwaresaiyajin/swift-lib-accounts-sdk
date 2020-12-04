@@ -156,6 +156,10 @@ public class AccountsApiClient: PSBaseApiClient {
         return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardExpiringCardOrderRestriction(accountNumber: accountNumber))
     }
     
+    public func getClientPermissions() -> Promise<[PSClientPermission]> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.getClientPermissions)
+    }
+    
     public func cancelPaymentCard(id: Int) -> Promise<PSPaymentCard> {
         return doRequest(requestRouter: AccountsApiRequestRouter.cancelPaymentCard(id: id))
     }
