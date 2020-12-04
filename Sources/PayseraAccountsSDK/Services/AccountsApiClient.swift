@@ -67,14 +67,6 @@ public class AccountsApiClient: PSBaseApiClient {
         return doRequest(requestRouter: AccountsApiRequestRouter.createAccount(userId: userId))
     }
     
-    public func canUserOrderCard(userId: Int) -> Promise<PSClientAllowance> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.canUserOrderCard(userId: userId))
-    }
-    
-    public func canUserFillQuestionnaire(userId: Int) -> Promise<PSClientAllowance> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.canUserFillQuestionnaire(userId: userId))
-    }
-    
     public func getAvailableCurrencies(filter: PSAvailableCurrencyFilter) -> Promise<PSMetadataAwareResponse<PSAvailableCurrency>> {
         return doRequest(requestRouter: AccountsApiRequestRouter.getAvailableCurrencies(filter: filter))
     }
@@ -156,7 +148,7 @@ public class AccountsApiClient: PSBaseApiClient {
         return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardExpiringCardOrderRestriction(accountNumber: accountNumber))
     }
     
-    public func getClientPermissions() -> Promise<[PSClientPermission]> {
+    public func getClientPermissions() -> Promise<[PSClientAllowance]> {
         return doRequest(requestRouter: AccountsApiRequestRouter.getClientPermissions)
     }
     

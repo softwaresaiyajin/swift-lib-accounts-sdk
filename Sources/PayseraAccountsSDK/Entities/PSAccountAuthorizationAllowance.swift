@@ -1,7 +1,7 @@
 import Foundation
 import ObjectMapper
 
-public class PSAccountAuthorization: Mappable {
+public class PSAccountAuthorizationAllowance: Mappable {
     
     public var accountNumber: String!
     public var allowed: Bool

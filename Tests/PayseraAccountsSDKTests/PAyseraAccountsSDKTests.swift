@@ -12,7 +12,7 @@ class AccountsSDKTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let token = "insert_me"
+        let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJldnBiYW5rIiwiaXNzIjoiYXV0aF9hcGkiLCJleHAiOjE2MDcwOTYwNzIsImp0aSI6IjFEdzdZU0FsVEktQTA0MUhVbGJCZzQ4TjN5aHBGdW9OIiwicHNyOnMiOlsiY29uZmlybWVkX2xvZ19pbiJdLCJwc3I6dSI6IjgxMzQyNTkiLCJwc3I6c2lkIjoiY0pOT2JUaTZ5VDFyTTBCLWU1bExqZVdtRlNZeVZuX3EiLCJwc3I6YSI6eyJ1c2VyX2lkIjoiODEzNDI1OSJ9LCJpYXQiOjE2MDcwNTI4NzJ9.rxyfZmsqJFICLm1NoJ2AEMyXI3u72U_ZfybG4W5ssmoILywV8-hnU-yHxCSvwnO0dugMgkHbchNtG4n_hOBrVenAbtiDSB2TvXwCDSj9goeBS1U9x0iIzHWUXPvDroEcP95Cks-zRDIvlHRhcMCRI2Z6IPlZLIkVBG1IAF4oBJIBRMZ4Anyj83hNPh0mHZ3-Pxj_f1jfP-PZyHnvAHa8X7fgX9ty7gSU7yXKsiE8ZBRfldwJtIF-Pp3wfTpe2mFzyTxE1KiJv-Pq7OoKFzjMPWUnaCPdoNOhiNtakjDQNoxoWmPCJx2UbH19ed6jpfuosCKskLHJGwNuEFSjyk_VgBAb_o6Y7M5hejTwBiyKv6xCqxJYd_cB4Xp37XS6FHTrofjLyr3PyC-JyULxW8NhrWANrdQXhS7NXh-zXXrJswX1daQATu6DblzaY9iYn_GSVJ_kJ509ATXqLCo0_NtKijKcDfbKKHb_gMXX_dZ8kQdBpHcieWUuuixEHNy0waih4qB-IYgsfXD6JJZwnDeXpU33RUtiqN2eZdvuMz19kZmTkhIaA7sjTcu72vejKDbJXbC0jl8Dxw4FnAdT8Gbn2-ZTk0ArZEEPvIrwvpVBaW1nWmnuOmiAtSVtPyqfFWMUW-AUCzPBjA7Oe31DgQWWAmXBR5aomzHH-sb5WCFVLUc"
         
         let credentials = PSApiJWTCredentials()
         credentials.token = try! decode(jwt: token)
@@ -253,38 +253,6 @@ class AccountsSDKTests: XCTestCase {
                                                 accountNumber: "change me",
                                                 description: "modric").done { result in
                                                     object = result
-            }.catch { error in
-                print(error)
-            }.finally {
-                expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 3.0)
-        XCTAssertNotNil(object)
-    }
-    
-    func testCanUserOrderCard() {
-        let expectation = XCTestExpectation(description: "")
-        var object: Any?
-        //insert user id
-        accountsApiClient.canUserOrderCard(userId: 1111111).done { result in
-            object = result
-            }.catch { error in
-                print(error)
-            }.finally {
-                expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 3.0)
-        XCTAssertNotNil(object)
-    }
-    
-    func testCanUserFillQuestionnaire() {
-        let expectation = XCTestExpectation(description: "")
-        var object: Any?
-        //insert user id
-        accountsApiClient.canUserFillQuestionnaire(userId: 1111111).done { result in
-            object = result
             }.catch { error in
                 print(error)
             }.finally {
@@ -721,7 +689,7 @@ class AccountsSDKTests: XCTestCase {
     
     func testGetClientPermissions() {
         let expectation = XCTestExpectation(description: "")
-        var object: [PSClientPermission]?
+        var object: [PSClientAllowance]?
         accountsApiClient
             .getClientPermissions()
             .done {

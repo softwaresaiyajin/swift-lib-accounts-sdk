@@ -23,8 +23,6 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getPaymentCardDeliveryCountries(filter: PSBaseFilter)
     case getCategorizedAccountNumbers(filter: PSGetCategorizedAccountNumbersFilterRequest)
     case getTransfer(id: String)
-    case canUserOrderCard(userId: Int)
-    case canUserFillQuestionnaire(userId: Int)
     case getAuthorizations(PSGetAuthorizationsFilterRequest)
     case getPaymentCardExpiringCardOrderRestriction(accountNumber: String)
     case getPaymentCardDeliveryPreference(accountNumber: String)
@@ -91,8 +89,6 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getPaymentCardDeliveryDate,
              .getCategorizedAccountNumbers,
              .getTransfer,
-             .canUserOrderCard,
-             .canUserFillQuestionnaire,
              .getPaymentCardDeliveryCountries,
              .getAuthorizations,
              .getPaymentCardDeliveryPreference,
@@ -254,12 +250,6 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .setAccountDescription( _,let accountNumber, _):
             return "/account/rest/v1/accounts/\(accountNumber)/descriptions"
             
-        case .canUserOrderCard:
-            return "/client-allowance/rest/v1/client-allowances/can-order-card"
-            
-        case .canUserFillQuestionnaire:
-            return "/client-allowance/rest/v1/client-allowances/can-fill-questionnaire"
-            
         case .getAuthorizations:
             return "/permission/rest/v1/authorizations"
             
@@ -384,13 +374,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .setAccountDescription(let userId, _, let description):
             return ["body": ["description" : description], "query": ["user_id": userId]]
-            
-        case .canUserOrderCard(let userId):
-            return ["user_id": userId]
-            
-        case .canUserFillQuestionnaire(let userId):
-            return ["user_id": userId]
-            
+               
         case .getAuthorizations(let psGetAuthorizationsRequest):
             return psGetAuthorizationsRequest.toJSON()
             
