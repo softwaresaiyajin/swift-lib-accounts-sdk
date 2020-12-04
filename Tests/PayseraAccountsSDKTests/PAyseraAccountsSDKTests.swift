@@ -687,11 +687,11 @@ class AccountsSDKTests: XCTestCase {
         XCTAssertNotNil(object)
     }
     
-    func testGetClientPermissions() {
+    func testGetClientAllowances() {
         let expectation = XCTestExpectation(description: "")
         var object: [PSClientAllowance]?
         accountsApiClient
-            .getClientPermissions()
+            .getClientAllowances()
             .done {
                 object = $0
             }
