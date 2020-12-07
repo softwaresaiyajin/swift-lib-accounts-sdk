@@ -4,17 +4,12 @@ import ObjectMapper
 public class PSAccountAuthorizationAllowance: Mappable {
     
     public var accountNumber: String!
-    public var allowed: Bool
+    public var allowed: Bool = false
     
-    required public init?(map: Map) {
-        do {
-            accountNumber   = try map.value("account_number")
-            allowed         = try map.value("allowed")
-        } catch {
-            print(error)
-            return nil
-        }
+    required public init?(map: Map) { }
+    
+    public func mapping(map: Map) {
+        accountNumber   <- map["account_number"]
+        allowed         <- map["allowed"]
     }
-    
-    public func mapping(map: Map) {}
 }
